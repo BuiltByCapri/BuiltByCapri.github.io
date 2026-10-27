@@ -111,6 +111,18 @@ main > .label { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
   color: var(--stone);
 }
 
+.report {
+  font: 400 15px/1.2 var(--mono);
+  color: var(--stone);
+  border-collapse: collapse;
+  min-width: 60%;
+}
+.report td { padding: 0.45rem 0; border-bottom: 1px solid var(--rule); }
+.report td + td { text-align: right; color: var(--ink); padding-left: 2rem; }
+@media (hover: none) {
+  .report { margin: 1.5rem 0; font-size: 13px; }
+}
+
 .more {
   position: absolute;
   inset: 0;
