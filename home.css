@@ -1,0 +1,187 @@
+:root {
+  --ink: #171310;
+  --paper: #FBF8F3;
+  --stone: #6E635A;
+  --rule: #E3DBD0;
+  --signal: #B4472A;
+  --surface: #F3EDE4;
+  --display: "Fraunces", Georgia, serif;
+  --body: "Inter", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #F0EAE2;
+    --paper: #121010;
+    --stone: #9C9086;
+    --rule: #2C2724;
+    --signal: #E07A52;
+    --surface: #1B1817;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.55 var(--body);
+}
+a { color: var(--signal); text-underline-offset: 0.18em; }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+.intro, main, footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.label {
+  font: 500 13px/1.2 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin: 0;
+}
+
+.intro { padding-top: clamp(3rem, 9vw, 7rem); padding-bottom: clamp(3rem, 7vw, 5rem); }
+.intro h1 {
+  font: 600 clamp(48px, 9vw, 88px)/1.05 var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 20, "WONK" 1;
+  letter-spacing: -0.02em;
+  margin: 1rem 0 1.5rem;
+}
+.intro p { max-width: 34rem; margin: 0 0 1rem; }
+.intro .lead { font-size: 21px; line-height: 1.45; }
+.intro p:not(.lead):not(.label) { color: var(--stone); }
+
+main > .label { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+
+.work {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
+  gap: 3.5rem 2rem;
+}
+
+.card h3 {
+  font: 500 28px/1.15 var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 20, "WONK" 1;
+  letter-spacing: -0.01em;
+  margin: 1.1rem 0 0.35rem;
+}
+.card .sum { margin: 0 0 0.6rem; }
+.card .tags {
+  font: 400 13px/1.2 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin: 0;
+}
+
+/* The snapshot. The longer description sits on top of it and shows on hover or focus. */
+.shot {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.shot--pair { display: grid; grid-template-columns: 1fr 1fr; }
+.shot--pair img + img { border-left: 1px solid var(--rule); }
+.shot--type { display: grid; place-items: center; }
+.wordmark {
+  font: 600 clamp(40px, 7vw, 64px)/1 var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 20, "WONK" 1;
+  color: var(--stone);
+}
+
+.more {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--paper);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.more p { margin: 0; max-width: 34rem; }
+.go {
+  font: 500 13px/1.2 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.shot:hover .more,
+.shot:focus-visible .more,
+.shot:focus-within .more { opacity: 1; }
+
+/* No hover on touch screens, so the description sits under the snapshot instead. */
+@media (hover: none) {
+  .shot { aspect-ratio: auto; overflow: visible; }
+  .shot img { aspect-ratio: 16 / 10; height: auto; }
+  .shot--type { min-height: 10rem; }
+  .shot--type .more { grid-row: 2; }
+  .more {
+    position: static;
+    opacity: 1;
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    padding: 1.1rem;
+  }
+  .shot--pair .more { grid-column: 1 / -1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .more { transition: none; }
+}
+
+.quote {
+  margin: clamp(4rem, 10vw, 7rem) 0 0;
+  padding: clamp(2rem, 6vw, 4rem) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.quote blockquote { margin: 0; }
+.quote p {
+  font: 400 clamp(28px, 4.5vw, 44px)/1.15 var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 20, "WONK" 1;
+  letter-spacing: -0.015em;
+  max-width: 44rem;
+  margin: 0 0 1.25rem;
+}
+.quote figcaption {
+  font: 500 13px/1.2 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+  font-size: 15px;
+  color: var(--stone);
+}
