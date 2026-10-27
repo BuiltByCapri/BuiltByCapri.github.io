@@ -107,7 +107,10 @@
 
     <li class="card card--past">
       <div class="shot shot--type" tabindex="0" aria-describedby="lashmap-more">
-        <span class="wordmark" aria-hidden="true">LashMap</span>
+        <picture class="logo">
+          <source srcset="/work/lashmap-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="/work/lashmap.png" alt="The LashMap logo: a closed eye above the name" width="250" height="151" loading="lazy">
+        </picture>
         <div class="more" id="lashmap-more">
           <p>Lash measurement and mapping with a CRM, sold to lash artists. A Next.js and Supabase app, a Python and MediaPipe service for the measuring, and Stripe billing. It's offline now. Its mapping engine became the one inside Eigen.</p>
         </div>

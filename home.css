@@ -105,10 +105,13 @@ main > .label { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
 .shot--pair { display: grid; grid-template-columns: 1fr 1fr; }
 .shot--pair img + img { border-left: 1px solid var(--rule); }
 .shot--type { display: grid; place-items: center; }
-.wordmark {
-  font: 600 clamp(40px, 7vw, 64px)/1 var(--display);
-  font-variation-settings: "opsz" 96, "SOFT" 20, "WONK" 1;
-  color: var(--stone);
+.shot .logo { display: contents; }
+.shot .logo img {
+  width: min(250px, 60%);
+  height: auto;
+  aspect-ratio: auto;
+  margin: 1.5rem 0;
+  grid-row: 1;
 }
 
 .report {
