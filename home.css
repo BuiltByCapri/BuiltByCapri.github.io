@@ -200,3 +200,41 @@ footer {
   font-size: 15px;
   color: var(--stone);
 }
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 2.5rem clamp(2rem, 6vw, 5rem);
+  padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--rule);
+}
+.contact-intro p { max-width: 26rem; color: var(--stone); margin: 0 0 1rem; }
+.contact-intro .contact-title {
+  font: 400 clamp(28px, 4vw, 40px)/1.15 var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 20, "WONK" 1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 1rem 0 1rem;
+}
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 1.25rem; align-content: start; }
+.contact-form .wide { grid-column: 1 / -1; }
+.contact-form label { display: grid; gap: .45rem; font: 500 13px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--stone); }
+.contact-form .optional { text-transform: none; letter-spacing: 0; font: 400 13px var(--body); }
+.contact-form input, .contact-form textarea {
+  font: 400 17px/1.45 var(--body); color: var(--ink);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 2px;
+  padding: .7rem .85rem; width: 100%; box-sizing: border-box;
+}
+.contact-form textarea { resize: vertical; min-height: 8rem; }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; border-color: transparent; }
+.contact-form ::placeholder { color: var(--stone); opacity: .7; }
+.send { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; }
+.send button {
+  font: 500 15px/1 var(--body); color: var(--paper); background: var(--ink);
+  border: 0; border-radius: 2px; padding: .95rem 1.6rem; cursor: pointer;
+}
+.send button:hover { background: var(--signal); }
+.send button:disabled { opacity: .6; cursor: default; }
+.status { margin: 0; color: var(--stone); font-size: 15px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 34rem) { .contact-form { grid-template-columns: 1fr; } }

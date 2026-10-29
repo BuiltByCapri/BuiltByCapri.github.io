@@ -127,11 +127,62 @@
     </blockquote>
     <figcaption>Raine Bowe, creator of Wondersaurs</figcaption>
   </figure>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="contact-intro">
+      <h2 class="label">Work with me</h2>
+      <p class="contact-title" id="contact-title">Tell me what you're trying to solve.</p>
+      <p>A few lines is plenty. I read every one and write back myself.</p>
+    </div>
+    <form class="contact-form" action="/api/contact" method="post">
+      <label>Your name <input name="name" autocomplete="name" required maxlength="120"></label>
+      <label>Email <input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+      <label class="wide">What are you working on? <textarea name="project" rows="5" required maxlength="4000"></textarea></label>
+      <label>When would you like to start? <span class="optional">Optional</span> <input name="timeline" maxlength="120" placeholder="Next month, this spring, not sure yet"></label>
+      <label class="hp" aria-hidden="true">Leave this empty <input name="company_site" tabindex="-1" autocomplete="off"></label>
+      <div class="send wide">
+        <button type="submit">Send</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
 </main>
 
 <footer>
   <a href="https://github.com/BuiltByCapri">GitHub</a>
   <span>Aria: <a href="/privacy/">Privacy policy</a> · <a href="/tos/">Terms of service</a></span>
 </footer>
+<script>
+// Sends the form without leaving the page. Without JavaScript the form posts
+// normally and comes back to this section with ?sent=1 or ?sent=0.
+(() => {
+  const form = document.querySelector(".contact-form");
+  const status = form.querySelector(".status");
+  const sent = new URLSearchParams(location.search).get("sent");
+  if (sent === "1") status.textContent = "Thanks. It's in my inbox and I'll reply soon.";
+  if (sent === "0") status.textContent = "That didn't send. Check the fields and try again.";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = form.querySelector("button");
+    button.disabled = true;
+    status.textContent = "Sending...";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "That didn't send. Try again in a minute.");
+      form.reset();
+      status.textContent = "Thanks. It's in my inbox and I'll reply soon.";
+    } catch (err) {
+      status.textContent = err.message;
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+</script>
 </body>
 </html>
