@@ -238,3 +238,19 @@ footer {
 .status { margin: 0; color: var(--stone); font-size: 15px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 @media (max-width: 34rem) { .contact-form { grid-template-columns: 1fr; } }
+
+/* The envelope: fixed bottom right, hidden over the bio and the form itself. */
+.mail {
+  position: fixed; right: max(1.25rem, env(safe-area-inset-right, 0px)); bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); z-index: 10;
+  display: flex; align-items: center; gap: 0; height: 52px; padding: 0 15px;
+  color: var(--paper); background: var(--ink); border-radius: 26px; text-decoration: none;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, .45);
+  opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: opacity .3s, transform .3s, background .2s, gap .25s;
+}
+.mail.on { opacity: 1; transform: none; pointer-events: auto; animation: bob 3.2s ease-in-out .4s infinite; }
+.mail span { font: 500 15px/1 var(--body); max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width .3s; }
+.mail:hover, .mail:focus-visible { background: var(--signal); gap: .6rem; animation-play-state: paused; }
+.mail:hover span, .mail:focus-visible span { max-width: 7rem; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px) rotate(-3deg); } }
+@media (prefers-reduced-motion: reduce) { .mail.on { animation: none; } .mail { transition: opacity .2s; } }

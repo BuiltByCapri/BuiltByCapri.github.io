@@ -48,17 +48,15 @@
     </li>
 
     <li class="card">
-      <a class="shot shot--pair" href="https://builtbycapri.github.io/hablamos-plan/" aria-describedby="hablamos-more">
-        <img src="/work/hablamos-plan.jpg" alt="The Hablamos planner: today's Spanish checklist" width="1280" height="800" loading="lazy">
-        <img src="/work/hablamos-talk.jpg" alt="The Hablamos speaking app: a conversation in Spanish with a mic button" width="1280" height="800" loading="lazy">
+      <div class="shot" tabindex="0" aria-describedby="hablamos-more">
+        <img src="/work/hablamos.jpg" alt="Hablamos on a phone: a lesson arriving as a letter, a word on a ruled card, and a practice call with a mistake corrected in red pen" width="1920" height="1200" loading="lazy">
         <div class="more" id="hablamos-more">
-          <p>A Spanish practice system for someone learning with a tutor. Today it is a planner for the days between lessons and a speaking app for conversation out loud with Claude. The next version, being built now, joins them into one app: the tutor uploads what they already have from a lesson, it becomes the student's study material, and the tutor sees what to work on next time, down to the mistakes that keep coming up when the student speaks.</p>
-          <span class="go">Open the planner</span>
+          <p>A Spanish study app built around a real tutor. After each lesson the tutor uploads whatever they already have, notes or a photo of the board, and it arrives for the student as a letter with the new words inside. Between lessons the student practises on ruled cards and in a phone call where every slip is corrected in red pen. The tutor sees what to work on next time, down to the mistakes that keep coming up when the student speaks.</p>
         </div>
-      </a>
+      </div>
       <h3>Hablamos</h3>
-      <p class="sum">A Spanish practice system for the days between lessons.</p>
-      <p class="tags">In use · Tutor version in progress</p>
+      <p class="sum">Spanish lessons that arrive as letters, and practice that feels like a phone call.</p>
+      <p class="tags">With my tutor · In progress</p>
     </li>
 
     <li class="card">
@@ -148,6 +146,11 @@
   </section>
 </main>
 
+<a class="mail" href="#contact" aria-label="Send me a message">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+  <span>Say hello</span>
+</a>
+
 <footer>
   <a href="https://github.com/BuiltByCapri">GitHub</a>
   <span>Aria: <a href="/privacy/">Privacy policy</a> · <a href="/tos/">Terms of service</a></span>
@@ -182,6 +185,19 @@
       button.disabled = false;
     }
   });
+})();
+
+// The envelope follows the reader down the page once the bio is behind them,
+// and steps aside while the form itself is on screen.
+(() => {
+  const mail = document.querySelector(".mail");
+  const intro = document.querySelector(".intro");
+  const contact = document.getElementById("contact");
+  if (!mail || !("IntersectionObserver" in window)) return;
+  let introSeen = true, contactSeen = false;
+  const update = () => mail.classList.toggle("on", !introSeen && !contactSeen);
+  new IntersectionObserver(([e]) => { introSeen = e.isIntersecting; update(); }).observe(intro);
+  new IntersectionObserver(([e]) => { contactSeen = e.isIntersecting; update(); }, { threshold: 0.15 }).observe(contact);
 })();
 </script>
 </body>
