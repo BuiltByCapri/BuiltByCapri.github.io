@@ -267,3 +267,9 @@ footer {
   .card .sum { order: -2; }
   .card .tags { order: -1; margin-bottom: 1rem; }
 }
+
+/* Testimonials: italic and in curly quotes, so a client's words never read like my own copy. */
+.quote p { font-style: italic; }
+.quote p::before { content: "\201C"; }
+.quote p::after { content: "\201D"; }
+.quote p::before, .quote p::after { color: var(--signal); }
