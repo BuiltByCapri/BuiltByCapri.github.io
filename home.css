@@ -258,3 +258,12 @@ footer {
 /* In each hover: the problem in italics, softer; the payoff in bold, full ink. */
 .more em { font-style: italic; opacity: .78; }
 .more strong { font-weight: 600; color: var(--ink); }
+
+/* Phones: the description can't sit on the snapshot, so the card reads top to
+   bottom as title, summary, tags, then the snapshot with its description. */
+@media (hover: none) {
+  .card { display: flex; flex-direction: column; }
+  .card h3 { order: -3; margin-top: 0; }
+  .card .sum { order: -2; }
+  .card .tags { order: -1; margin-bottom: 1rem; }
+}
