@@ -254,3 +254,7 @@ footer {
 .mail:hover span, .mail:focus-visible span { max-width: 7rem; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px) rotate(-3deg); } }
 @media (prefers-reduced-motion: reduce) { .mail.on { animation: none; } .mail { transition: opacity .2s; } }
+
+/* In each hover: the problem in italics, softer; the payoff in bold, full ink. */
+.more em { font-style: italic; opacity: .78; }
+.more strong { font-weight: 600; color: var(--ink); }
