@@ -273,3 +273,19 @@ footer {
 .quote p::before { content: "\201C"; }
 .quote p::after { content: "\201D"; }
 .quote p::before, .quote p::after { color: var(--signal); }
+
+/* Every live project gets a visible way in, not only the hover. */
+.card .try {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font: 500 13px/1.2 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 3px;
+}
+.card .try::after { content: " \2192"; }
+.card .try:hover { color: var(--ink); }
+@media (hover: none) { .card .try { order: -1; margin: -0.4rem 0 1rem; align-self: flex-start; } }
