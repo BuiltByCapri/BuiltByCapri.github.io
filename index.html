@@ -9,116 +9,156 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/home.css">
+<style>
+.wrap{max-width:76rem;margin:0 auto;padding:0 1.5rem}
+/* Hero: words left, a collage of real work right. */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:center;padding:5rem 0 4.5rem}
+.hero h1{font:600 clamp(64px,9vw,112px)/.95 var(--display);font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 1;letter-spacing:-.03em;margin:.8rem 0 1.4rem}
+.lead{font-size:22px;line-height:1.42;max-width:31rem;margin:0 0 1rem}
+.sub{color:var(--stone);max-width:30rem;margin:0 0 2rem}
+.cta{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font:500 15px var(--body);padding:1rem 1.5rem;border-radius:2px}
+.btn:hover{background:var(--signal)}
+.ghost{font:500 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--signal);padding-bottom:3px}
+.collage{position:relative;height:560px}
+.collage .tile{position:absolute;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(23,19,16,.55),0 2px 0 rgba(0,0,0,.04);background:#fff}
+.collage img{display:block;width:100%;height:100%;object-fit:cover}
+.t1{width:62%;aspect-ratio:16/10;top:0;left:4%;transform:rotate(-3deg);z-index:2}
+.t2{width:58%;aspect-ratio:16/10;top:26%;right:0;transform:rotate(2.5deg);z-index:3}
+.t3{width:54%;aspect-ratio:16/10;bottom:2%;left:0;transform:rotate(1.5deg);z-index:4}
+.collage .chip{position:absolute;z-index:5;background:var(--paper);border:1px solid var(--rule);font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:.45rem .7rem;border-radius:2px;box-shadow:0 8px 20px -12px rgba(0,0,0,.4)}
+.c1{top:8%;right:6%}.c2{bottom:12%;right:10%}
+
+/* Work: two featured, then the rest. Every image sits on a designed cover. */
+.sec{border-top:1px solid var(--rule);padding:2rem 0 0}
+.feature{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:2.5rem;align-items:center;margin:2.5rem 0 4rem}
+.feature.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
+.feature.flip .cover{order:2}
+.cover{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/10.5;display:grid;place-items:center;padding:6%}
+.cover .frame{width:100%;border-radius:6px;overflow:hidden;box-shadow:0 26px 50px -24px rgba(0,0,0,.6);background:#fff}
+.cover .frame .bar{height:18px;background:rgba(255,255,255,.92);display:flex;gap:5px;align-items:center;padding:0 8px}
+.cover .frame .bar i{width:7px;height:7px;border-radius:50%;background:#ddd}
+.cover img{display:block;width:100%}
+.cover.bare{padding:0}.cover.bare img{height:100%;object-fit:cover}
+.kicker{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin:0 0 .6rem}
+.feature h2,.card h3{font:500 clamp(30px,3.6vw,44px)/1.05 var(--display);font-variation-settings:"opsz" 96,"SOFT" 20,"WONK" 1;letter-spacing:-.015em;margin:0 0 .7rem}
+.card h3{font-size:28px;margin:1.1rem 0 .35rem}
+.desc{margin:0 0 1rem;max-width:30rem}
+.tags{font:400 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3.5rem 2.5rem;margin:2.5rem 0 0}
+.grid .wide{grid-column:1/-1}
+.sum{margin:0 0 .6rem;color:var(--ink)}
+
+/* Covers' own colors, taken from each project. */
+.bg-eigen{background:radial-gradient(120% 90% at 30% 20%,#9b1a22,#4a0509 70%)}
+.bg-hab{background:#2D3B36}
+.bg-wonder{background:linear-gradient(160deg,#c9d6e2,#8ea6bd)}
+.bg-aria{background:linear-gradient(160deg,#2c3e55,#16222f)}
+.bg-plays{background:linear-gradient(160deg,#e9d9a8,#c9a24b)}
+.bg-time{background:#1b2130;color:#e9e3d6}
+.bg-lash{background:linear-gradient(160deg,#f2d7d9,#d9a6ab)}
+.report{width:78%;font:500 clamp(13px,1.3vw,17px) var(--mono);border-collapse:collapse}
+.report td{padding:.55rem 0;border-bottom:1px solid rgba(233,227,214,.18)}
+.report td:last-child{text-align:right;color:#e9b36a}
+.report caption{text-align:left;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(233,227,214,.6);padding-bottom:.8rem}
+.lashlogo{width:38%}
+
+/* Words from people. */
+._voices_unused{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:4rem 0;margin:5rem 0 0}
+._voices_unused p{font:italic 400 clamp(24px,2.6vw,32px)/1.2 var(--display);font-variation-settings:"opsz" 96,"SOFT" 20,"WONK" 1;margin:0 0 1rem}
+._voices_unused p::before{content:"\201C";color:var(--signal)}._voices_unused p::after{content:"\201D";color:var(--signal)}
+._voices_unused .ph{opacity:.45}
+._voices_unused small{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+
+@media (max-width:820px){
+ .hero{grid-template-columns:1fr;padding-top:3rem}
+ .collage{height:360px}
+ .feature,.feature.flip{grid-template-columns:1fr;gap:1.25rem}
+ .feature .cover,.feature.flip .cover{order:2}
+ .card{display:flex;flex-direction:column}
+ .card h3{order:-3;margin-top:0}
+ .card .sum{order:-2}
+ .card .tags{order:-1;margin-bottom:1rem}
+ .grid,._voices_unused{grid-template-columns:1fr}
+}
+
+.like { display:inline-block; margin-top:.8rem; font:italic 400 17px/1.3 var(--display); color:var(--ink); text-decoration:underline; text-decoration-color:var(--signal); text-underline-offset:4px; }
+.like:hover { color:var(--signal); }
+.feature .like { margin-left:0; display:block; }
+.wrap > .quote, .wrap > .contact { max-width:none; }
+@media (max-width:820px) { .card .like { order:-1; margin:-.4rem 0 1rem; align-self:flex-start; } }
+</style>
 </head>
 <body>
-<header class="intro">
-  <p class="label">Built by Capri</p>
-  <h1>Capri</h1>
-  <p class="lead">Bring me your problem and I'll give you something that solves it in return. I build the whole thing from design to deploy. No need to hire multiple people. You'll have Capri.</p>
-  <p>That could be a site you run yourself without touching code, like Wondersaurs, or an agent that handles the routine and brings you only the decisions, like Aria. Hover over a project to see what it does.</p>
-</header>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <p class="label">Built by Capri</p>
+      <h1>Capri</h1>
+      <p class="lead">Bring me your problem and I'll give you something that solves it in return. I build the whole thing from design to deploy. No need to hire multiple people. You'll have Capri.</p>
+      <p class="sub">That could be a site you run yourself without touching code, or an agent that handles the routine and brings you only the decisions.</p>
+      <div class="cta"><a class="btn" href="#contact">Tell me your problem</a><a class="ghost" href="#work">See the work</a></div>
+    </div>
+    <div class="collage" aria-hidden="true">
+      <div class="tile t1"><img src="/work/eigen.jpg" alt=""></div>
+      <div class="tile t2"><img src="/work/hablamos.jpg" alt=""></div>
+      <div class="tile t3"><img src="/work/wondersaurs.jpg" alt=""></div>
+      <span class="chip c1">A beauty brand</span>
+      <span class="chip c2">A storybook site</span>
+    </div>
+  </header>
 
-<main>
-  <h2 class="label">Work</h2>
-  <ul class="work">
-    <li class="card">
-      <a class="shot" href="https://eigen.beauty" aria-describedby="eigen-more">
-        <img src="/work/eigen.jpg" alt="The Eigen home page: made for the eyes you have" width="1280" height="800" loading="lazy">
-        <div class="more" id="eigen-more">
-          <p>My own beauty brand, for the eyes. <em>Nobody has the average eye most products are made for</em>, so Eigen makes things for the eyes you actually have. A lash kit, a tinted lash balm and a lower-lash mascara are in testing, along with a scan that measures each eye on its own. <strong>Right now the site is a lab where visitors choose the version they'd want and name their own price.</strong></p>
-          <span class="go">Visit eigen.beauty</span>
-        </div>
-      </a>
-      <h3>Eigen</h3>
-      <p class="sum">A beauty brand made for the eyes you have.</p>
-      <p class="tags">My brand · In testing</p>
-      <a class="try" href="https://eigen.beauty">Visit eigen.beauty</a>
-    </li>
+  <section class="sec" id="work">
+    <p class="label">Work</p>
 
-    <li class="card">
-      <a class="shot" href="https://wondersaurs.com" aria-describedby="wonder-more">
-        <img src="/work/wondersaurs.jpg" alt="The Wondersaurs home page over a painted valley of waterfalls" width="1280" height="800" loading="lazy">
-        <div class="more" id="wonder-more">
-          <p><em>Raine Bowe had a whole world of characters and had never made a web page.</em> Free stories and characters from his world, with a plush line on the way, all run from a simple editor: stories, characters, news and every line of wording. A bedtime light dims the page for reading in a dark room. <strong>He publishes and updates all of it himself, no developer needed.</strong></p>
-          <span class="go">Visit Wondersaurs</span>
-        </div>
-      </a>
-      <h3>Wondersaurs</h3>
-      <p class="sum">A storybook site for a children's creator.</p>
-      <p class="tags">For Raine Bowe · Live</p>
-    </li>
-
-    <li class="card">
-      <div class="shot" tabindex="0" aria-describedby="hablamos-more">
-        <img src="/work/hablamos.jpg" alt="Hablamos on a phone: a lesson arriving as a letter, a word on a ruled card, and a practice call with a mistake corrected in red pen" width="1920" height="1200" loading="lazy">
-        <div class="more" id="hablamos-more">
-          <p><em>What you learn with a tutor fades between lessons unless you type it all in yourself.</em> After each lesson the tutor uploads whatever they already have, notes or a photo of the board, and it arrives for the student as a letter with the new words inside. Between lessons the student practices on index cards, quizzes, and a phone call where every slip is corrected in red pen. <strong>The tutor sees what to work on next time, down to the mistakes that keep coming up.</strong></p>
-        </div>
+    <article class="feature">
+      <div class="cover bg-eigen"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/work/eigen.jpg" alt="Eigen"></div></div>
+      <div>
+        <p class="kicker">My brand · In testing</p>
+        <h2>Eigen</h2>
+        <p class="desc"><em>Nobody has the average eye most products are made for</em>, so Eigen makes things for the eyes you actually have: a lash kit, a tinted lash balm and a lower-lash mascara, with a scan that measures each eye on its own.</p>
+        <a class="ghost" href="https://eigen.beauty">Visit eigen.beauty</a>
       </div>
-      <h3>Hablamos</h3>
-      <p class="sum">Spanish lessons that arrive as letters, and practice that feels like a phone call.</p>
-      <p class="tags">With my tutor · In progress</p>
-    </li>
+    </article>
 
-    <li class="card">
-      <div class="shot" tabindex="0" aria-describedby="aria-more">
-        <img src="/work/aria.jpg" alt="Aria at work: a morning summary of what the agent handled and what came to the EA" width="1280" height="800" loading="lazy">
-        <div class="more" id="aria-more">
-          <p><em>Handing an executive's inbox to an agent feels risky.</em> Aria reads a CEO's Gmail, Calendar and Slack each morning and handles a short list of routine things alone. Everything else comes to the human EA as a card with a recommendation, and nothing happens until she says yes. <strong>Emails are treated as data, never as instructions.</strong></p>
-        </div>
+    <article class="feature flip">
+      <div class="cover bare bg-hab"><img src="/work/hablamos.jpg" alt="Hablamos"></div>
+      <div>
+        <p class="kicker">With my tutor · In progress</p>
+        <h2>Hablamos</h2>
+        <p class="desc"><em>What you learn with a tutor fades between lessons.</em> The tutor uploads what they already have, it arrives as a letter, and the student practices on index cards, quizzes and a phone call. The tutor sees what to work on next time.</p>
+        <a class="like" href="#contact" data-like="Hablamos">Want one like this?</a>
       </div>
-      <h3>Aria</h3>
-      <p class="sum">An executive assistant agent with a human as the judgment layer.</p>
-      <p class="tags">Agent · Demo company</p>
-    </li>
+    </article>
 
-    <li class="card">
-      <a class="shot" href="https://builtbycapri.github.io/plays-dashboard" aria-describedby="plays-more">
-        <img src="/work/plays.jpg" alt="My Plays: today's verdicts for each name on the watchlist" width="1280" height="800" loading="lazy">
-        <div class="more" id="plays-more">
-          <p><em>Most trading screens nudge you toward a trade.</em> An options screener built around a fixed budget per contract: Python pulls prices and option chains, a rule-based engine scores each name, and the page refreshes every 15 minutes during market hours. <strong>No trade is the default. A name has to pass every rule to earn a go.</strong></p>
-          <span class="go">Open the dashboard</span>
-        </div>
-      </a>
-      <h3>My Plays</h3>
-      <p class="sum">A dashboard that says plainly when there's no trade.</p>
-      <p class="tags">Python · Live</p>
-    </li>
-
-    <li class="card">
-      <a class="shot shot--type" href="https://github.com/BuiltByCapri/timecard-anomaly-detector" aria-describedby="timecard-more">
-        <table class="report" aria-hidden="true">
-          <tr><td>Late Arrival</td><td>13</td></tr>
-          <tr><td>Early Departure</td><td>12</td></tr>
-          <tr><td>Unauthorized Overtime</td><td>5</td></tr>
-          <tr><td>Missing Clock Out</td><td>3</td></tr>
-          <tr><td>Missing Clock In</td><td>2</td></tr>
-        </table>
-        <div class="more" id="timecard-more">
-          <p><em>Checking every timecard by hand is slow, and mistakes slip through.</em> A Python tool that flags missing punches, late arrivals, unauthorized overtime and early departures, then writes a report. It runs in Docker and on every push through GitHub Actions. <strong>A reviewer only looks at the records that need attention.</strong></p>
-          <span class="go">See the code</span>
-        </div>
-      </a>
-      <h3>Timecard Anomaly Detector</h3>
-      <p class="sum">The first pass on payroll, done by a script.</p>
-      <p class="tags">Python · Open source</p>
-    </li>
-
-    <li class="card card--past">
-      <div class="shot shot--type" tabindex="0" aria-describedby="lashmap-more">
-        <picture class="logo">
-          <source srcset="/work/lashmap-dark.png" media="(prefers-color-scheme: dark)">
-          <img src="/work/lashmap.png" alt="The LashMap logo: a closed eye above the name" width="250" height="151" loading="lazy">
-        </picture>
-        <div class="more" id="lashmap-more">
-          <p><em>Lash artists map by eye, and every client is different.</em> Lash measurement and mapping with a CRM, sold to lash artists. A Next.js and Supabase app, a Python and MediaPipe service for the measuring, and Stripe billing. It's offline now. <strong>Its mapping engine became the one inside Eigen.</strong></p>
-        </div>
-      </div>
-      <h3>LashMap</h3>
-      <p class="sum">Where the measurement work started.</p>
-      <p class="tags">Past work · Offline</p>
-    </li>
-  </ul>
+    <div class="grid">
+      <article class="card">
+        <div class="cover bg-wonder"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/work/wondersaurs.jpg" alt="Wondersaurs"></div></div>
+        <h3>Wondersaurs</h3><p class="sum">A storybook site for a children's creator.</p><p class="tags">For Raine Bowe · Live</p>
+      <a class="like" href="#contact" data-like="Wondersaurs">Want one like this?</a>
+      </article>
+      <article class="card">
+        <div class="cover bg-aria"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/work/aria.jpg" alt="Aria"></div></div>
+        <h3>Aria</h3><p class="sum">An executive assistant agent with a human as the judgment layer.</p><p class="tags">Agent · Demo company</p>
+      <a class="like" href="#contact" data-like="Aria">Want one like this?</a>
+      </article>
+      <article class="card">
+        <div class="cover bg-plays"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/work/plays.jpg" alt="My Plays"></div></div>
+        <h3>My Plays</h3><p class="sum">A dashboard that says plainly when there's no trade.</p><p class="tags">Python · Live</p>
+      <a class="like" href="#contact" data-like="My Plays">Want one like this?</a>
+      </article>
+      <article class="card">
+        <div class="cover bg-time"><table class="report"><caption>This week's flags</caption><tr><td>Late arrival</td><td>13</td></tr><tr><td>Early departure</td><td>12</td></tr><tr><td>Unauthorized overtime</td><td>5</td></tr><tr><td>Missing clock out</td><td>3</td></tr><tr><td>Missing clock in</td><td>2</td></tr></table></div>
+        <h3>Timecard Anomaly Detector</h3><p class="sum">The first pass on payroll, done by a script.</p><p class="tags">Python · Open source</p>
+      <a class="like" href="#contact" data-like="Timecard Anomaly Detector">Want one like this?</a>
+      </article>
+      <article class="card">
+        <div class="cover bg-lash"><img class="lashlogo" src="/work/lashmap.png" alt="LashMap logo"></div>
+        <h3>LashMap</h3><p class="sum">Where the measurement work started.</p><p class="tags">Past work · Offline</p>
+      <a class="like" href="#contact" data-like="LashMap">Want one like this?</a>
+      </article>
+    </div>
+  </section>
 
   <figure class="quote">
     <blockquote>
@@ -145,8 +185,7 @@
       </div>
     </form>
   </section>
-</main>
-
+</div>
 <a class="mail" href="#contact" aria-label="Send me a message">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
   <span>Say hello</span>
@@ -192,7 +231,7 @@
 // and steps aside while the form itself is on screen.
 (() => {
   const mail = document.querySelector(".mail");
-  const intro = document.querySelector(".intro");
+  const intro = document.querySelector(".hero");
   const contact = document.getElementById("contact");
   if (!mail || !("IntersectionObserver" in window)) return;
   let introSeen = true, contactSeen = false;
@@ -200,6 +239,17 @@
   new IntersectionObserver(([e]) => { introSeen = e.isIntersecting; update(); }).observe(intro);
   new IntersectionObserver(([e]) => { contactSeen = e.isIntersecting; update(); }, { threshold: 0.15 }).observe(contact);
 })();
+</script>
+<script>
+// "Want one like this?" starts the inquiry for them: it jumps to the form and
+// opens the message with the project they liked.
+document.querySelectorAll(".like").forEach((a) => a.addEventListener("click", (e) => {
+  e.preventDefault();
+  const box = document.querySelector('.contact-form textarea[name="project"]');
+  if (!box.value.trim()) box.value = `I'd like something like ${a.dataset.like}. `;
+  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  setTimeout(() => { box.focus(); box.setSelectionRange(box.value.length, box.value.length); }, 500);
+}));
 </script>
 </body>
 </html>
