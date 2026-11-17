@@ -97,14 +97,15 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .sec h2{font:700 clamp(36px,6vw,64px)/1.05 var(--sans);letter-spacing:-.045em;margin:0}
 .sec p{color:var(--dim);margin:.8rem 0 0;font-size:19px}
 
-.reel{overflow:hidden;padding:1rem 0 2rem;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.track{display:flex;gap:1.1rem;width:max-content;animation:roll 70s linear infinite}
-.reel:hover .track,.reel:focus-within .track{animation-play-state:paused}
-@keyframes roll{to{transform:translateX(-50%)}}
+.reel{overflow-x:auto;overflow-y:hidden;padding:1rem 0 2rem;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.reel::-webkit-scrollbar{display:none}
+.reel.dragging{cursor:grabbing}
+.reel.dragging .w{pointer-events:none}
+.track{display:flex;gap:1.1rem;width:max-content;padding:0 20px}
+.w img{-webkit-user-drag:none;user-select:none}
 .w{--mx:50%;--my:50%;position:relative;width:min(80vw,22rem);flex:none;text-decoration:none;color:inherit;background:var(--card2);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .5s var(--ease)}
 .w::after{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--mx) var(--my),rgba(217,181,110,.14),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
-.w:hover{transform:scale(1.03)}
-.w:hover::after{opacity:1}
+@media (hover:hover){.w:hover{transform:scale(1.03)}.w:hover::after{opacity:1}}
 .w img{display:block;border-bottom:1px solid var(--line);width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:rgba(0,0,0,.25)}
 .w div{padding:1.1rem 1.2rem 1.3rem}
 .w h3{font:600 22px/1.15 var(--sans);letter-spacing:-.025em;margin:0 0 .3rem}
@@ -172,18 +173,18 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
     <a class="w" href="https://builtbycapri.com/salons/" target="_blank" rel="noreferrer"><img src="/work/casaluz.jpg" alt="Casa Luz" loading="lazy"><div><h3>Casa Luz</h3><p>A salon site with booking, group bookings, deposits and texts that bring clients back.</p></div></a>
     <a class="w" href="https://builtbycapri.com/barbershops/" target="_blank" rel="noreferrer"><img src="/work/navaja.jpg" alt="Navaja" loading="lazy"><div><h3>Navaja</h3><p>A barbershop site: choose your barber, see real openings, book two chairs at once.</p></div></a>
     <a class="w" href="https://eigen.beauty" target="_blank" rel="noreferrer"><img src="/work/eigen.jpg" alt="Eigen" loading="lazy"><div><h3>Eigen</h3><p>A beauty brand with a scan that measures each eye on its own.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer"><img src="/work/aria.jpg" alt="Aria" loading="lazy"><div><h3>Aria</h3><p>An executive assistant agent, with a person making the judgment calls.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer"><img src="/work/wondersaurs.jpg" alt="Wondersaurs" loading="lazy"><div><h3>Wondersaurs</h3><p>A storybook site for a children's author.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer"><img src="/work/plays.jpg" alt="My Plays" loading="lazy"><div><h3>My Plays</h3><p>A trading dashboard that says plainly when there's no trade.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer"><img src="/work/hablamos.jpg" alt="Hablamos" loading="lazy"><div><h3>Hablamos</h3><p>A Spanish practice app, built with my tutor.</p></div></a>
+    <a class="w" href="/work/" target="_blank" rel="noreferrer"><img src="/work/aria.jpg" alt="Aria" loading="lazy"><div><h3>Aria</h3><p>An executive assistant agent, with a person making the judgment calls.</p></div></a>
+    <a class="w" href="https://wondersaurs.com" target="_blank" rel="noreferrer"><img src="/work/wondersaurs.jpg" alt="Wondersaurs" loading="lazy"><div><h3>Wondersaurs</h3><p>A storybook site for a children's author.</p></div></a>
+    <a class="w" href="/work/" target="_blank" rel="noreferrer"><img src="/work/plays.jpg" alt="My Plays" loading="lazy"><div><h3>My Plays</h3><p>A trading dashboard that says plainly when there's no trade.</p></div></a>
+    <a class="w" href="/work/" target="_blank" rel="noreferrer"><img src="/work/hablamos.jpg" alt="Hablamos" loading="lazy"><div><h3>Hablamos</h3><p>A Spanish practice app, built with my tutor.</p></div></a>
     <a class="w" href="https://rent-day-demo.vercel.app" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/rentday.jpg" alt="" loading="lazy"><div><h3>Rent Day</h3><p>Rent collection for a suite owner: pay links, reminders, late fees that add themselves.</p></div></a>
     <a class="w" href="https://builtbycapri.com/salons/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/casaluz.jpg" alt="" loading="lazy"><div><h3>Casa Luz</h3><p>A salon site with booking, group bookings, deposits and texts that bring clients back.</p></div></a>
     <a class="w" href="https://builtbycapri.com/barbershops/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/navaja.jpg" alt="" loading="lazy"><div><h3>Navaja</h3><p>A barbershop site: choose your barber, see real openings, book two chairs at once.</p></div></a>
     <a class="w" href="https://eigen.beauty" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/eigen.jpg" alt="" loading="lazy"><div><h3>Eigen</h3><p>A beauty brand with a scan that measures each eye on its own.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/aria.jpg" alt="" loading="lazy"><div><h3>Aria</h3><p>An executive assistant agent, with a person making the judgment calls.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/wondersaurs.jpg" alt="" loading="lazy"><div><h3>Wondersaurs</h3><p>A storybook site for a children's author.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/plays.jpg" alt="" loading="lazy"><div><h3>My Plays</h3><p>A trading dashboard that says plainly when there's no trade.</p></div></a>
-    <a class="w" href="https://builtbycapri.com" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/hablamos.jpg" alt="" loading="lazy"><div><h3>Hablamos</h3><p>A Spanish practice app, built with my tutor.</p></div></a>
+    <a class="w" href="/work/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/aria.jpg" alt="" loading="lazy"><div><h3>Aria</h3><p>An executive assistant agent, with a person making the judgment calls.</p></div></a>
+    <a class="w" href="https://wondersaurs.com" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/wondersaurs.jpg" alt="" loading="lazy"><div><h3>Wondersaurs</h3><p>A storybook site for a children's author.</p></div></a>
+    <a class="w" href="/work/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/plays.jpg" alt="" loading="lazy"><div><h3>My Plays</h3><p>A trading dashboard that says plainly when there's no trade.</p></div></a>
+    <a class="w" href="/work/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/hablamos.jpg" alt="" loading="lazy"><div><h3>Hablamos</h3><p>A Spanish practice app, built with my tutor.</p></div></a>
   </div></div>
 
 <div class="wrap">
@@ -250,6 +251,48 @@ track.addEventListener("pointermove", (e) => {
 });
 
 const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("seen"); io.unobserve(e.target); } }), { threshold: .15 });
+// The reel drifts on its own, and anyone can swipe, scroll or drag it. It pauses while they do,
+// picks back up a few seconds later, and loops because the cards are listed twice.
+(() => {
+  const reel = document.querySelector(".reel");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let held = false, idleUntil = 0, pos = 0, last = performance.now();
+  const half = () => track.scrollWidth / 2;
+  const touch = () => { idleUntil = performance.now() + 3000; };
+  const wrap = () => {
+    if (reel.scrollLeft >= half()) reel.scrollLeft -= half();
+    else if (reel.scrollLeft <= 0) reel.scrollLeft += half();
+  };
+  function tick(t) {
+    const dt = Math.min(64, t - last); last = t;
+    if (!still && !held && t > idleUntil && !(matchMedia("(hover: hover)").matches && reel.matches(":hover"))) {
+      pos += dt * 0.03;
+      if (pos >= 1) { reel.scrollLeft += Math.floor(pos); pos -= Math.floor(pos); wrap(); }
+    }
+    requestAnimationFrame(tick);
+  }
+  reel.addEventListener("scroll", () => { if (held || performance.now() < idleUntil) wrap(); }, { passive: true });
+  ["wheel", "touchstart", "touchmove", "keydown"].forEach((e) => reel.addEventListener(e, touch, { passive: true }));
+  reel.addEventListener("touchend", touch, { passive: true });
+
+  // Mouse drag on a computer. A real drag never counts as a click on the card underneath.
+  let startX = 0, startLeft = 0, moved = false;
+  reel.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
+    held = true; moved = false; startX = e.clientX; startLeft = reel.scrollLeft;
+  });
+  addEventListener("pointermove", (e) => {
+    if (!held || e.pointerType !== "mouse") return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 5) { moved = true; reel.classList.add("dragging"); }
+    if (moved) { reel.scrollLeft = startLeft - dx; wrap(); }
+  });
+  addEventListener("pointerup", () => { if (!held) return; held = false; reel.classList.remove("dragging"); touch(); });
+  reel.addEventListener("click", (e) => { if (moved) { e.preventDefault(); moved = false; } }, true);
+
+  requestAnimationFrame(() => { reel.scrollLeft = 1; requestAnimationFrame(tick); });
+})();
+
 document.querySelectorAll(".reveal").forEach((el, i) => { el.style.transitionDelay = (el.closest(".hero") ? i * 120 : 0) + "ms"; io.observe(el); });
 
 // "Tell me yours" lands on the box, clear of the header, with the cursor already in it.
