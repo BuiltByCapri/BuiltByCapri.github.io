@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
   const body = req.body || {};
   const wantsJson = (req.headers.accept || "").includes("application/json");
   const done = (status, payload, anchor) =>
-    wantsJson ? res.status(status).json(payload) : res.redirect(303, `/${anchor}#contact`);
+    wantsJson ? res.status(status).json(payload) : res.redirect(303, `/work/${anchor}#contact`);
 
   if (clean(body.company_site, 200)) return done(200, { ok: true }, "?sent=1");
 
