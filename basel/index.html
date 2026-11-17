@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Built by Capri · Tell me what's hardest</title>
+<meta name="description" content="Tell me what's hardest about your business, and I'll build the thing that fixes it. Capri, Miami.">
+<meta property="og:image" content="https://builtbycapri.com/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#020D09; --card:transparent; --card2:transparent; --text:#F3EBDD; --dim:#A49C8E; --line:rgba(217,181,110,.32);
+  --grad:linear-gradient(100deg,#C9A45C 0%,#E8C987 28%,#FFF4DA 50%,#E8C987 72%,#C9A45C 100%);
+  --sans:"Manrope",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+#ask{scroll-margin-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.5 var(--sans);letter-spacing:-.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:68rem;margin:0 auto;padding:0 20px}
+
+/* Light that moves behind the hero and follows the pointer a little. */
+.aura{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.aura i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.38;animation:float 20s ease-in-out infinite alternate}
+.aura i:nth-child(1){background:#0E6B47;left:-20vmax;top:-30vmax}
+.aura i:nth-child(2){background:#1FA572;right:-25vmax;top:-10vmax;animation-delay:-7s;opacity:.22}
+.aura i:nth-child(3){background:#0B4F37;left:20vmax;top:30vmax;animation-delay:-13s;opacity:.3}
+@keyframes float{to{transform:translate(10vmax,8vmax) scale(1.15)}}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(2,13,9,.94);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:52px}
+.brand{font:600 17px var(--sans);color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.mini{font:700 13px var(--sans);color:#14110C;background:#F3EBDD;padding:.4rem .9rem;border-radius:99px;text-decoration:none}
+
+.hero{text-align:center;padding:clamp(4rem,14vw,9rem) 0 3rem}
+.hero .eyebrow{font:600 15px var(--sans);color:var(--dim);margin:0 0 1rem}
+.hero h1{font:700 clamp(44px,9vw,96px)/1.02 var(--sans);letter-spacing:-.045em;margin:0}
+.grad{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:200% 0}}
+.swap{display:inline-block;min-width:1ch}
+.swap span{display:inline-block;color:#E8C987;text-shadow:0 0 28px rgba(232,201,135,.35);animation:up .6s var(--ease) both}
+.swap span.out{animation:away .35s ease both}
+@keyframes up{from{opacity:0;transform:translateY(.35em)}}
+@keyframes away{to{opacity:0;transform:translateY(-.3em)}}
+.hero .lead{font:500 clamp(19px,2.6vw,24px)/1.4 var(--sans);color:var(--dim);max-width:36rem;margin:1.6rem auto 0;letter-spacing:-.015em}
+.hero .lead b{color:var(--text);font-weight:600}
+
+.ask{position:relative;max-width:44rem;margin:0 auto 6rem;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(1.3rem,4vw,2.2rem);overflow:hidden}
+.ask::before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;background:linear-gradient(180deg,rgba(217,181,110,.55),rgba(217,181,110,.05));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;pointer-events:none}
+.ask label{display:block;font:600 15px var(--sans);margin:0 0 .6rem}
+textarea,input{width:100%;font:400 18px/1.45 var(--sans);color:var(--text);background:transparent;border:1px solid var(--line);border-radius:16px;padding:1rem 1.1rem;transition:border-color .25s,box-shadow .25s;letter-spacing:-.01em}
+textarea{min-height:9rem;resize:vertical}
+textarea::placeholder,input::placeholder{color:#5E625F}
+textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-shadow:0 0 0 4px rgba(217,181,110,.1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.8rem}
+.send{margin-top:1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn{position:relative;overflow:hidden;font:700 17px var(--sans);background:linear-gradient(180deg,#FBF4E6,#E8DCC4);color:#14110C;border:0;border-radius:99px;padding:1rem 1.7rem;cursor:pointer;text-decoration:none;display:inline-block;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(201,164,92,.55),0 8px 30px -14px rgba(217,181,110,.45);transition:transform .3s var(--ease),box-shadow .3s}
+.btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-20deg);animation:glint 3.6s ease-in-out infinite}
+@keyframes glint{0%,60%{left:-60%}100%{left:130%}}
+.btn:hover{transform:scale(1.04);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(201,164,92,.7),0 14px 44px -12px rgba(217,181,110,.6)}
+.send small{color:var(--dim);font-size:14px}
+.thanks{display:none}
+.thanks.on{display:block;animation:up .7s var(--ease) both}
+.thanks h2{font:700 clamp(32px,5vw,48px)/1.05 var(--sans);letter-spacing:-.04em;margin:0 0 .7rem}
+.thanks p{margin:0 0 1.5rem;color:var(--dim)}
+
+.sec{text-align:center;margin:0 0 2rem}
+.sec h2{font:700 clamp(36px,6vw,64px)/1.05 var(--sans);letter-spacing:-.045em;margin:0}
+.sec p{color:var(--dim);margin:.8rem 0 0;font-size:19px}
+
+.reel{overflow:hidden;padding:1rem 0 2rem;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:1.1rem;width:max-content;animation:roll 70s linear infinite}
+.reel:hover .track,.reel:focus-within .track{animation-play-state:paused}
+@keyframes roll{to{transform:translateX(-50%)}}
+.w{--mx:50%;--my:50%;position:relative;width:min(80vw,22rem);flex:none;text-decoration:none;color:inherit;background:var(--card2);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .5s var(--ease)}
+.w::after{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--mx) var(--my),rgba(217,181,110,.14),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.w:hover{transform:scale(1.03)}
+.w:hover::after{opacity:1}
+.w img{display:block;border-bottom:1px solid var(--line);width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:rgba(0,0,0,.25)}
+.w div{padding:1.1rem 1.2rem 1.3rem}
+.w h3{font:600 22px/1.15 var(--sans);letter-spacing:-.025em;margin:0 0 .3rem}
+.w p{margin:0;font-size:15px;color:var(--dim);line-height:1.45}
+
+.close{text-align:center;padding:7rem 0 5rem}
+.close .big{font:700 clamp(40px,8vw,88px)/1.02 var(--sans);letter-spacing:-.05em;margin:0 0 1.4rem}
+.close .sub{font:500 clamp(19px,2.4vw,22px)/1.45 var(--sans);color:var(--dim);max-width:30rem;margin:0 auto 2.2rem}
+.close small{display:block;color:var(--dim);margin-top:3rem;font-size:14px}
+
+/* Things fade up as you reach them. */
+.reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.seen{opacity:1;transform:none}
+
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="https://builtbycapri.com">Built by Capri</a>
+  <a class="mini" href="#ask">Tell me yours</a>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow reveal">Capri · Miami</p>
+    <h1 class="reveal">Tell me what's hardest<br>about your <span class="swap" id="swap"><span>business</span></span>.</h1>
+    <p class="lead reveal">I'll build the thing that fixes it. Booking, payments, dashboards, apps, AI agents. <b>You'll have Capri.</b></p>
+  </section>
+
+  <form class="ask reveal" id="ask">
+    <div id="askBody">
+      <label for="hard">In your own words</label>
+      <textarea id="hard" name="project" required></textarea>
+      <input name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div class="two">
+        <input name="name" placeholder="Your name" required autocomplete="name" aria-label="Your name">
+        <input name="contact" placeholder="Phone or email" required aria-label="Phone or email">
+      </div>
+      <div class="send">
+        <button class="btn" type="submit">Send it to Capri</button>
+        <small id="note">I read every one myself.</small>
+      </div>
+    </div>
+    <div class="thanks" id="thanks" aria-live="polite">
+      <h2>Got it, <span class="grad" id="who">friend</span>.</h2>
+      <p>I'll get back to you within a day. Want to talk sooner? Grab a time on my calendar.</p>
+      <a class="btn" href="https://calendly.com/hello-builtbycapri/30min" target="_blank" rel="noreferrer">Book a call</a>
+    </div>
+  </form>
+
+  <div class="sec reveal"><h2>Things I've built.</h2><p>Tap any of them. They're real.</p></div>
+</div>
+
+<div class="reel reveal" tabindex="0" aria-label="Work"><div class="track" id="track"></div></div>
+
+<div class="wrap">
+  <section class="close">
+    <p class="big reveal">Taking <span class="grad">five</span> builds<br>for December.</p>
+    <p class="sub reveal">Not sure what you need yet? That's fine. Tell me what's going on and we'll figure it out together.</p>
+    <a class="btn reveal" href="#ask">Tell me yours</a>
+    <small>Capri · Built by Capri · Miami</small>
+  </section>
+</div>
+
+<script>
+const words = ["business", "salon", "startup", "shop", "brand", "team"];
+const swap = document.getElementById("swap");
+let wi = 0;
+setInterval(() => {
+  swap.firstElementChild.classList.add("out");
+  setTimeout(() => { wi = (wi + 1) % words.length; swap.innerHTML = `<span>${words[wi]}</span>`; }, 330);
+}, 2400);
+
+// The placeholder types out real problems, so the box never stares back blank.
+const ideas = [
+  "I chase clients for deposits every week...",
+  "No-shows are eating my Saturdays...",
+  "My team does everything in spreadsheets...",
+  "I need an app built and don't know where to start...",
+  "I want an AI assistant answering my DMs...",
+];
+const ta = document.getElementById("hard");
+let ii = 0, ci = 0, del = false;
+(function type() {
+  if (document.activeElement === ta || ta.value) { ta.placeholder = ""; return setTimeout(type, 600); }
+  const s = ideas[ii];
+  ci += del ? -1 : 1;
+  ta.placeholder = s.slice(0, ci);
+  if (!del && ci === s.length) { del = true; return setTimeout(type, 1600); }
+  if (del && ci === 0) { del = false; ii = (ii + 1) % ideas.length; }
+  setTimeout(type, del ? 22 : 45);
+})();
+
+const work = [
+  ["Rent Day", "Rent collection for a suite owner: pay links, reminders, late fees that add themselves.", "rentday.jpg", "https://rent-day-demo.vercel.app"],
+  ["Casa Luz", "A salon site with booking, group bookings, deposits and texts that bring clients back.", "casaluz.jpg", "https://builtbycapri.com/salons/"],
+  ["Navaja", "A barbershop site: choose your barber, see real openings, book two chairs at once.", "navaja.jpg", "https://builtbycapri.com/barbershops/"],
+  ["Eigen", "A beauty brand with a scan that measures each eye on its own.", "eigen.jpg", "https://eigen.beauty"],
+  ["Aria", "An executive assistant agent, with a person making the judgment calls.", "aria.jpg", "https://builtbycapri.com"],
+  ["Wondersaurs", "A storybook site for a children's author.", "wondersaurs.jpg", "https://builtbycapri.com"],
+  ["My Plays", "A trading dashboard that says plainly when there's no trade.", "plays.jpg", "https://builtbycapri.com"],
+  ["Hablamos", "A Spanish practice app, built with my tutor.", "hablamos.jpg", "https://builtbycapri.com"],
+];
+const card = ([t, p, img, href]) => `<a class="w" href="${href}" target="_blank" rel="noreferrer"><img src="/work/${img}" alt="${t}" loading="lazy"><div><h3>${t}</h3><p>${p}</p></div></a>`;
+const track = document.getElementById("track");
+track.innerHTML = work.map(card).join("") + work.map(card).join("");
+// A soft light follows the pointer across each card.
+track.addEventListener("pointermove", (e) => {
+  const w = e.target.closest(".w"); if (!w) return;
+  const b = w.getBoundingClientRect();
+  w.style.setProperty("--mx", e.clientX - b.left + "px");
+  w.style.setProperty("--my", e.clientY - b.top + "px");
+});
+
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("seen"); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach((el, i) => { el.style.transitionDelay = (el.closest(".hero") ? i * 120 : 0) + "ms"; io.observe(el); });
+
+// "Tell me yours" lands on the box, clear of the header, with the cursor already in it.
+document.querySelectorAll('a[href="#ask"]').forEach((l) => l.onclick = (e) => {
+  e.preventDefault();
+  document.getElementById("ask").scrollIntoView({ behavior: "smooth", block: "start" });
+  setTimeout(() => ta.focus({ preventScroll: true }), 600);
+});
+
+// Sends through the site's contact form, which emails Capri. Phone or email both work.
+document.getElementById("ask").onsubmit = async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target), note = document.getElementById("note"), btn = e.target.querySelector("button");
+  const contact = f.get("contact").toString().trim();
+  const isEmail = contact.includes("@");
+  const body = { name: f.get("name"), project: f.get("project"), company_site: f.get("company_site"), source: "QR page",
+                 email: isEmail ? contact : "", phone: isEmail ? "" : contact };
+  btn.disabled = true; note.textContent = "Sending...";
+  try {
+    const r = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(out.error || "That didn't send. Try again in a minute.");
+    document.getElementById("who").textContent = f.get("name").toString().trim().split(" ")[0] || "friend";
+    document.getElementById("askBody").hidden = true;
+    document.getElementById("thanks").classList.add("on");
+  } catch (err) {
+    note.textContent = err.message; btn.disabled = false;
+  }
+};
+</script>
+</body>
+</html>
