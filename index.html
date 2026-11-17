@@ -66,7 +66,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.5 var(--san
 .hero h1{font:700 clamp(44px,9vw,96px)/1.02 var(--sans);letter-spacing:-.045em;margin:0}
 .grad{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
 @keyframes sheen{to{background-position:200% 0}}
-.swap{display:inline-block;min-width:1ch}
+.swap{display:inline-block;text-align:left;white-space:nowrap;vertical-align:bottom}
 .swap span{display:inline-block;color:#E8C987;text-shadow:0 0 28px rgba(232,201,135,.35);animation:up .6s var(--ease) both}
 .swap span.out{animation:away .35s ease both}
 @keyframes up{from{opacity:0;transform:translateY(.35em)}}
@@ -123,7 +123,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.seen{opacity:1;transform:none}
 
-@media (max-width:560px){.two{grid-template-columns:1fr}}
+@media (max-width:560px){.two{grid-template-columns:1fr}.swap{text-align:center}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -139,7 +139,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 <div class="wrap">
   <section class="hero">
     <p class="eyebrow reveal">Capri · Miami</p>
-    <h1 class="reveal">Tell me what's hardest<br>about your <span class="swap" id="swap"><span>business</span></span>.</h1>
+    <h1 class="reveal">Tell me what's hardest<br>about your <span class="swap" id="swap"><span>business.</span></span></h1>
     <p class="lead reveal">I'll build the thing that fixes it. Booking, payments, dashboards, apps, AI agents. <b>You'll have Capri.</b></p>
   </section>
 
@@ -198,8 +198,22 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 </div>
 
 <script>
-const words = ["business", "salon", "startup", "shop", "brand", "team"];
+const words = ["business.", "salon.", "startup.", "shop.", "brand.", "team."];
 const swap = document.getElementById("swap");
+// Hold the slot at the widest word, so the headline never reflows as the word changes.
+function holdWidth() {
+  swap.style.width = "";
+  const probe = document.createElement("span");
+  probe.style.cssText = "position:absolute;visibility:hidden;white-space:nowrap";
+  swap.append(probe);
+  let w = 0;
+  for (const word of words) { probe.textContent = word; w = Math.max(w, probe.getBoundingClientRect().width); }
+  probe.remove();
+  swap.style.width = Math.ceil(w) + 2 + "px";
+}
+holdWidth();
+document.fonts?.ready.then(holdWidth);
+addEventListener("resize", holdWidth);
 let wi = 0;
 setInterval(() => {
   swap.firstElementChild.classList.add("out");
