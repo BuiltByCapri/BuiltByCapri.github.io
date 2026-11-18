@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Contact · Built by Capri</title>
+<meta name="description" content="Questions, ideas or a quick hello. Reach Capri at Built by Capri in Miami.">
+<link rel="canonical" href="https://builtbycapri.com/contact/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Built by Capri">
+<meta property="og:url" content="https://builtbycapri.com/contact/">
+<meta property="og:title" content="Contact · Built by Capri">
+<meta property="og:description" content="Questions, ideas or a quick hello. Reach Capri at Built by Capri in Miami.">
+<meta property="og:image" content="https://builtbycapri.com/og-emerald.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#020D09; --text:#F3EBDD; --dim:#A49C8E; --line:rgba(217,181,110,.32); --gold:#E8C987;
+  --grad:linear-gradient(100deg,#C9A45C 0%,#E8C987 28%,#FFF4DA 50%,#E8C987 72%,#C9A45C 100%);
+  --sans:"Manrope",system-ui,sans-serif; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.55 var(--sans);letter-spacing:-.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:0 20px}
+.aura{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.aura i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.34;animation:float 20s ease-in-out infinite alternate}
+.aura i:nth-child(1){background:#0E6B47;left:-20vmax;top:-30vmax}
+.aura i:nth-child(2){background:#1FA572;right:-25vmax;top:-10vmax;animation-delay:-7s;opacity:.2}
+@keyframes float{to{transform:translate(10vmax,8vmax) scale(1.15)}}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(2,13,9,.94);border-bottom:1px solid var(--line)}
+.top .wrap{max-width:68rem;display:flex;justify-content:space-between;align-items:center;height:52px}
+.brand{font:600 17px var(--sans);color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.topnav{display:flex;align-items:center;gap:1.1rem}
+.topnav a:not(.mini){color:var(--dim);text-decoration:none;font:600 14px var(--sans)}
+.topnav{gap:1.3rem}.topnav a{position:relative;padding:.3rem 0}
+.topnav a[aria-current]{color:var(--text)!important}
+.topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-.15rem;height:2px;border-radius:2px;background:#C9A45C}
+@media (max-width:560px){.topnav{gap:1rem}.topnav a[href="/"]{display:none}}
+.mini{font:700 13px var(--sans);color:#14110C;background:#F3EBDD;padding:.4rem .9rem;border-radius:99px;text-decoration:none}
+
+.intro{padding:clamp(4rem,12vw,8rem) 0 3rem;text-align:center}
+.eyebrow{font:600 15px var(--sans);color:var(--dim);margin:0 0 1rem}
+h1{font:700 clamp(44px,8vw,88px)/1.02 var(--sans);letter-spacing:-.045em;margin:0}
+.grad{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:200% 0}}
+.intro .lead{font:500 clamp(19px,2.6vw,23px)/1.45 var(--sans);color:var(--dim);max-width:38rem;margin:1.6rem auto 0}
+.intro .lead b{color:var(--text);font-weight:600}
+
+h2{font:700 clamp(32px,5vw,52px)/1.05 var(--sans);letter-spacing:-.04em;margin:0 0 1.6rem;text-align:center}
+section{padding:4rem 0}
+.creds{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.cred{border:1px solid var(--line);border-radius:24px;padding:1.6rem}
+.cred .k{font:800 13px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 .6rem}
+.cred h3{font:700 22px/1.2 var(--sans);letter-spacing:-.025em;margin:0 0 .3rem}
+.cred .sm{color:var(--dim);font-size:14px;margin:0 0 1rem}
+.cred p{margin:0;color:var(--dim);font-size:16px}
+.cred p b{color:var(--text);font-weight:600}
+
+.steps{display:grid;gap:1.1rem;max-width:44rem;margin:0 auto}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;padding:1.4rem 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step i{font-style:normal;width:12px;height:12px;border-radius:50%;margin-top:.55rem;background:#C9A45C;box-shadow:0 0 18px rgba(232,201,135,.6)}
+.step h3{font:700 22px/1.2 var(--sans);letter-spacing:-.025em;margin:0 0 .3rem}
+.step p{margin:0;color:var(--dim)}
+
+.why{max-width:40rem;margin:0 auto}
+.why p{font:500 clamp(18px,2.2vw,20px)/1.6 var(--sans);color:var(--dim);margin:0 0 1.2rem}
+.why p b{color:var(--text);font-weight:600}
+
+.end{text-align:center;padding:4rem 0 3rem}
+.end p{color:var(--dim);font-size:19px;margin:0 0 1.8rem}
+.btn{position:relative;overflow:hidden;font:700 17px var(--sans);background:linear-gradient(180deg,#FBF4E6,#E8DCC4);color:#14110C;border:0;border-radius:99px;padding:1rem 1.7rem;text-decoration:none;display:inline-block;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(201,164,92,.55),0 8px 30px -14px rgba(217,181,110,.45)}
+.btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-20deg);animation:glint 3.6s ease-in-out infinite}
+@keyframes glint{0%,60%{left:-60%}100%{left:130%}}
+
+.foot{text-align:center;padding:2rem 0 5rem}
+.links{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+.links a,.foot small a{color:var(--dim);text-decoration:none;font-size:15px}
+.foot small{display:block;color:var(--dim);margin-top:1.4rem;font-size:14px}
+@media (hover:hover){.links a:hover,.foot small a:hover,.topnav a:not(.mini):hover{color:var(--gold)}}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.seen{opacity:1;transform:none}
+@media (max-width:760px){.creds{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+.box{max-width:40rem;margin:0 auto;border:1px solid var(--line);border-radius:28px;padding:clamp(1.3rem,4vw,2.2rem)}
+.box input,.box textarea{width:100%;font:400 17px/1.45 var(--sans);color:var(--text);background:transparent;border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-top:.7rem}
+.box textarea{min-height:8rem;resize:vertical}
+.box input::placeholder,.box textarea::placeholder{color:#5E625F}
+.box input:focus,.box textarea:focus{outline:none;border-color:rgba(217,181,110,.6);box-shadow:0 0 0 4px rgba(217,181,110,.1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.box .btn{border:0;cursor:pointer;margin-top:1.2rem;font-family:var(--sans)}
+.box small{display:block;color:var(--dim);font-size:14px;margin-top:.8rem}
+.other{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2.4rem;color:var(--dim)}
+.other a{color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:.7rem 1.2rem;font-weight:600;font-size:15px}
+#thanks{display:none;text-align:center}
+#thanks.on{display:block}
+#thanks h2{margin-bottom:.6rem}
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="aura" aria-hidden="true"><i></i><i></i></div>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="/">Built by Capri</a>
+  <nav class="topnav"><a href="/">Home</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/contact/" aria-current="page">Contact</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="intro">
+    <p class="eyebrow reveal">Contact · Miami</p>
+    <h1 class="reveal">Say <span class="grad">hello.</span></h1>
+    <p class="lead reveal">Questions, ideas, or just want to talk something through? Send a note. Ready to get started? <a href="/#plan" style="color:#E8C987">Build your plan</a> instead.</p>
+  </section>
+
+  <form class="box reveal" id="contact">
+    <div id="body">
+      <input name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div class="two">
+        <input name="name" placeholder="Your name" required autocomplete="name" aria-label="Your name">
+        <input name="business" placeholder="Business name" autocomplete="organization" aria-label="Business name">
+      </div>
+      <div class="two">
+        <input name="email" type="email" placeholder="Email" autocomplete="email" aria-label="Email">
+        <input name="phone" type="tel" placeholder="Phone" autocomplete="tel" aria-label="Phone">
+      </div>
+      <textarea name="project" placeholder="What's on your mind?" required aria-label="Message"></textarea>
+      <button class="btn" type="submit">Send it to Capri</button>
+      <small id="note">I read every one myself and reply within a day.</small>
+    </div>
+    <div id="thanks" aria-live="polite">
+      <h2>Got it, <span class="grad" id="who">friend</span>.</h2>
+      <p style="color:var(--dim);margin:0 0 1.4rem">I'll get back to you within a day.</p>
+    </div>
+  </form>
+
+  <div class="other reveal">
+    <a href="mailto:hello@builtbycapri.com">hello@builtbycapri.com</a>
+    <a href="https://calendly.com/hello-builtbycapri/30min" target="_blank" rel="noreferrer">Book a 30 minute call</a>
+  </div>
+
+  <footer class="foot" style="margin-top:4rem">
+    <nav class="links"><a href="/">Home</a><a href="/about/">About</a><a href="/work/">All my work</a><a href="/salons/">Salons</a><a href="/barbershops/">Barbershops</a><a href="/privacy/">Privacy</a><a href="/tos/">Terms</a></nav>
+    <small>Capri · Built by Capri · Miami · <a href="mailto:hello@builtbycapri.com">hello@builtbycapri.com</a></small>
+  </footer>
+</div>
+
+<script>
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("seen"); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+document.getElementById("contact").onsubmit = async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target), note = document.getElementById("note"), btn = e.target.querySelector('button[type="submit"]');
+  const email = f.get("email").toString().trim(), phone = f.get("phone").toString().trim();
+  if (!email && !phone) { note.textContent = "Add an email or a phone number so I can reach you."; return; }
+  const body = { name: f.get("name"), business: f.get("business"), email, phone, project: f.get("project"), company_site: f.get("company_site"), source: "Contact page" };
+  btn.disabled = true; note.textContent = "Sending...";
+  try {
+    const r = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(out.error || "That didn't send. Try again in a minute.");
+    document.getElementById("who").textContent = f.get("name").toString().trim().split(" ")[0] || "friend";
+    document.getElementById("body").hidden = true;
+    document.getElementById("thanks").classList.add("on");
+  } catch (err) { note.textContent = err.message; btn.disabled = false; }
+};
+</script>
+</body>
+</html>

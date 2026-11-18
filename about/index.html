@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>About Capri · Built by Capri</title>
+<meta name="description" content="Capri has an MBA, Google Cloud certifications and a Teacher of the Year award. She helps small businesses figure out what they need and builds it.">
+<link rel="canonical" href="https://builtbycapri.com/about/">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Built by Capri">
+<meta property="og:url" content="https://builtbycapri.com/about/">
+<meta property="og:title" content="About Capri · Built by Capri">
+<meta property="og:description" content="MBA, Google Cloud certified, former Teacher of the Year. She helps small businesses figure out what they need and builds it.">
+<meta property="og:image" content="https://builtbycapri.com/og-emerald.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#020D09; --text:#F3EBDD; --dim:#A49C8E; --line:rgba(217,181,110,.32); --gold:#E8C987;
+  --grad:linear-gradient(100deg,#C9A45C 0%,#E8C987 28%,#FFF4DA 50%,#E8C987 72%,#C9A45C 100%);
+  --sans:"Manrope",system-ui,sans-serif; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.55 var(--sans);letter-spacing:-.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:0 20px}
+.aura{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.aura i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.34;animation:float 20s ease-in-out infinite alternate}
+.aura i:nth-child(1){background:#0E6B47;left:-20vmax;top:-30vmax}
+.aura i:nth-child(2){background:#1FA572;right:-25vmax;top:-10vmax;animation-delay:-7s;opacity:.2}
+@keyframes float{to{transform:translate(10vmax,8vmax) scale(1.15)}}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(2,13,9,.94);border-bottom:1px solid var(--line)}
+.top .wrap{max-width:68rem;display:flex;justify-content:space-between;align-items:center;height:52px}
+.brand{font:600 17px var(--sans);color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.topnav{display:flex;align-items:center;gap:1.1rem}
+.topnav a:not(.mini){color:var(--dim);text-decoration:none;font:600 14px var(--sans)}
+.topnav{gap:1.3rem}.topnav a{position:relative;padding:.3rem 0}
+.topnav a[aria-current]{color:var(--text)!important}
+.topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-.15rem;height:2px;border-radius:2px;background:#C9A45C}
+@media (max-width:560px){.topnav{gap:1rem}.topnav a[href="/"]{display:none}}
+.mini{font:700 13px var(--sans);color:#14110C;background:#F3EBDD;padding:.4rem .9rem;border-radius:99px;text-decoration:none}
+
+.intro{padding:clamp(4rem,12vw,8rem) 0 3rem;text-align:center}
+.eyebrow{font:600 15px var(--sans);color:var(--dim);margin:0 0 1rem}
+h1{font:700 clamp(44px,8vw,88px)/1.02 var(--sans);letter-spacing:-.045em;margin:0}
+.grad{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:200% 0}}
+.intro .lead{font:500 clamp(19px,2.6vw,23px)/1.45 var(--sans);color:var(--dim);max-width:38rem;margin:1.6rem auto 0}
+.intro .lead b{color:var(--text);font-weight:600}
+
+h2{font:700 clamp(32px,5vw,52px)/1.05 var(--sans);letter-spacing:-.04em;margin:0 0 1.6rem;text-align:center}
+section{padding:4rem 0}
+.creds{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.cred{border:1px solid var(--line);border-radius:24px;padding:1.6rem}
+.cred .k{font:800 13px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 .6rem}
+.cred h3{font:700 22px/1.2 var(--sans);letter-spacing:-.025em;margin:0 0 .3rem}
+.cred .sm{color:var(--dim);font-size:14px;margin:0 0 1rem}
+.cred p{margin:0;color:var(--dim);font-size:16px}
+.cred p b{color:var(--text);font-weight:600}
+
+.steps{display:grid;gap:1.1rem;max-width:44rem;margin:0 auto}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;padding:1.4rem 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step i{font-style:normal;width:12px;height:12px;border-radius:50%;margin-top:.55rem;background:#C9A45C;box-shadow:0 0 18px rgba(232,201,135,.6)}
+.step h3{font:700 22px/1.2 var(--sans);letter-spacing:-.025em;margin:0 0 .3rem}
+.step p{margin:0;color:var(--dim)}
+
+.why{max-width:40rem;margin:0 auto}
+.why p{font:500 clamp(18px,2.2vw,20px)/1.6 var(--sans);color:var(--dim);margin:0 0 1.2rem}
+.why p b{color:var(--text);font-weight:600}
+
+.end{text-align:center;padding:4rem 0 3rem}
+.end p{color:var(--dim);font-size:19px;margin:0 0 1.8rem}
+.btn{position:relative;overflow:hidden;font:700 17px var(--sans);background:linear-gradient(180deg,#FBF4E6,#E8DCC4);color:#14110C;border:0;border-radius:99px;padding:1rem 1.7rem;text-decoration:none;display:inline-block;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(201,164,92,.55),0 8px 30px -14px rgba(217,181,110,.45)}
+.btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-20deg);animation:glint 3.6s ease-in-out infinite}
+@keyframes glint{0%,60%{left:-60%}100%{left:130%}}
+
+.foot{text-align:center;padding:2rem 0 5rem}
+.links{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+.links a,.foot small a{color:var(--dim);text-decoration:none;font-size:15px}
+.foot small{display:block;color:var(--dim);margin-top:1.4rem;font-size:14px}
+@media (hover:hover){.links a:hover,.foot small a:hover,.topnav a:not(.mini):hover{color:var(--gold)}}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.seen{opacity:1;transform:none}
+@media (max-width:760px){.creds{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="aura" aria-hidden="true"><i></i><i></i></div>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="/">Built by Capri</a>
+  <nav class="topnav"><a href="/">Home</a><a href="/work/">Work</a><a href="/about/" aria-current="page">About</a><a href="/contact/">Contact</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="intro">
+    <p class="eyebrow reveal">About · Miami</p>
+    <h1 class="reveal">Hi, I'm <span class="grad">Capri.</span></h1>
+    <p class="lead reveal">I help entrepreneurs and small business owners turn ideas, challenges, and messy processes into solutions that actually work. <b>I bring the business side and the technical side, and I explain both in plain English.</b></p>
+  </section>
+
+  <section>
+    <h2 class="reveal">My background.</h2>
+    <div class="creds">
+      <div class="cred reveal">
+        <p class="k">Business</p>
+        <h3>MBA</h3>
+        <p class="sm">Organizational Management</p>
+        <p>I look at your business the way an owner does: <b>where the money comes from, where it leaks, and where your time goes.</b></p>
+      </div>
+      <div class="cred reveal">
+        <p class="k">Technology</p>
+        <h3>Google Cloud certified</h3>
+        <p class="sm">Cloud Digital Leader and Associate Cloud Engineer</p>
+        <p>The foundation under what I build. <b>Your tools run on real infrastructure, set up properly from day one.</b></p>
+      </div>
+      <div class="cred reveal">
+        <p class="k">Teaching</p>
+        <h3>Teacher of the Year</h3>
+        <p class="sm">Six years in classrooms in Atlanta and Houston</p>
+        <p>If I build it, I can teach it. <b>Every tool comes with a walkthrough, so you never need me just to use it.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="reveal">My approach.</h2>
+    <div class="steps">
+      <div class="step reveal"><i></i><div><h3>Start with the problem</h3><p>We begin with what's hardest about your business, not with what you think you're supposed to buy.</p></div></div>
+      <div class="step reveal"><i></i><div><h3>Build what fits</h3><p>Sometimes that's a website. Sometimes it's a tool nobody else has. Sometimes it's software you already pay for, finally set up right.</p></div></div>
+      <div class="step reveal"><i></i><div><h3>Hand it over ready</h3><p>You get a walkthrough, a plain explanation of how it works, and someone to call when you want to grow it.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="reveal">Why I built Built by Capri.</h2>
+    <div class="why">
+      <p class="reveal">Most people start a business without anyone showing them how. They're great at what they do. Then they end up chasing payments, answering DMs at midnight, and guessing at everything else.</p>
+      <p class="reveal">One of my first clients owns salon suites. She was texting five renters every week to collect rent. I built her a system that sends the reminders, takes the payments, and adds the late fees on its own. <b>Now she doesn't chase anyone.</b></p>
+      <p class="reveal">That's what Built by Capri is for. <b>Small businesses, big problems, and someone who will actually build the fix.</b></p>
+    </div>
+  </section>
+
+  <section class="end">
+    <p class="reveal">Got something that's been hard for too long?</p>
+    <a class="btn reveal" href="/#plan">Tell me</a>
+  </section>
+
+  <footer class="foot">
+    <nav class="links"><a href="/">Home</a><a href="/contact/">Contact</a><a href="/work/">All my work</a><a href="/salons/">Salons</a><a href="/barbershops/">Barbershops</a><a href="/privacy/">Privacy</a><a href="/tos/">Terms</a></nav>
+    <small>Capri · Built by Capri · Miami · <a href="mailto:hello@builtbycapri.com">hello@builtbycapri.com</a></small>
+  </footer>
+</div>
+
+<script>
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("seen"); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

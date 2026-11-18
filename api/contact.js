@@ -3,10 +3,15 @@
 // A filled-in "company_site" field is the honeypot: bots fill every field,
 // people never see it, and the request is thanked without sending anything.
 
-const LIMITS = { name: 120, email: 200, phone: 40, project: 4000, timeline: 120, source: 40 };
+const LIMITS = { name: 120, email: 200, phone: 40, project: 4000, timeline: 120, source: 40, business: 160, stage: 60, estimate: 20, item: 200 };
 
 function clean(value, max) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+// The homepage plan builder sends its picks as short lists.
+function list(value) {
+  return Array.isArray(value) ? value.slice(0, 20).map((v) => clean(v, LIMITS.item)).filter(Boolean) : [];
 }
 
 function escapeHtml(text) {
@@ -36,10 +41,25 @@ module.exports = async (req, res) => {
   const hasEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const hasPhone = phone.replace(/\D/g, "").length >= 7;
 
-  if (!name || !project || !(hasEmail || hasPhone)) {
+  const business = clean(body.business, LIMITS.business);
+  const stage = clean(body.stage, LIMITS.stage);
+  const problems = list(body.problems);
+  const services = list(body.services);
+  const estimate = clean(body.estimate, LIMITS.estimate);
+
+  if (!name || !(project || problems.length) || !(hasEmail || hasPhone)) {
     return done(400, { error: "Add your name, a working email or phone number, and a line about the project." }, "?sent=0");
   }
   const reach = [hasEmail && email, hasPhone && phone].filter(Boolean).join(" · ");
+
+  const lines = [
+    business && `Business: ${business}`,
+    stage && `Stage: ${stage}`,
+    problems.length && `\nWhat's going on:\n${problems.map((p) => `- ${p}`).join("\n")}`,
+    services.length && `\nRecommended:\n${services.map((s) => `- ${s}`).join("\n")}`,
+    estimate && `\nEstimated starting investment: ${estimate}`,
+    project && `\n${problems.length ? "Notes:\n" : ""}${project}`,
+  ].filter(Boolean).join("\n");
 
   const key = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO;
@@ -48,12 +68,12 @@ module.exports = async (req, res) => {
     return done(503, { error: "The form isn't connected right now. Email me instead." }, "?sent=0");
   }
 
-  const text = `${name} <${reach}>\n${source ? `From: ${source}\n` : ""}${timeline ? `Timeline: ${timeline}\n` : ""}\n${project}`;
+  const text = `${name} <${reach}>\n${source ? `From: ${source}\n` : ""}${timeline ? `Timeline: ${timeline}\n` : ""}\n${lines}`;
   const html =
     `<p><strong>${escapeHtml(name)}</strong> &lt;${escapeHtml(reach)}&gt;</p>` +
     (source ? `<p>From: ${escapeHtml(source)}</p>` : "") +
     (timeline ? `<p>Timeline: ${escapeHtml(timeline)}</p>` : "") +
-    `<p style="white-space:pre-wrap">${escapeHtml(project)}</p>`;
+    `<p style="white-space:pre-wrap">${escapeHtml(lines)}</p>`;
 
   const sent = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -62,7 +82,7 @@ module.exports = async (req, res) => {
       from: "Built by Capri <inquiries@builtbycapri.com>",
       to: [to],
       ...(hasEmail ? { reply_to: email } : {}),
-      subject: `${source ? `${source}: ` : ""}New inquiry from ${name}`,
+      subject: `${source ? `${source}: ` : ""}New inquiry from ${name}${business ? `, ${business}` : ""}${estimate ? ` (${estimate})` : ""}`,
       text,
       html,
     }),
