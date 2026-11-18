@@ -155,6 +155,8 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 #rows li span{color:var(--text);font-size:16px}
 #rows li small{display:block;color:var(--dim);font-size:13px;margin-top:.1rem}
 #rows li b{white-space:nowrap;font-weight:700}
+#rows li b s{color:var(--dim);font-weight:500;margin-right:.45rem}
+.deal{display:inline-block;margin-left:.5rem;font:800 10px var(--sans);letter-spacing:.1em;text-transform:uppercase;font-style:normal;color:#14110C;background:#E8C987;border-radius:99px;padding:.2rem .5rem;vertical-align:2px}
 #rows li.empty{color:var(--dim);border:0;font-size:15px;animation:none}
 @keyframes slide{from{opacity:0;transform:translateX(16px)}}
 .total{display:flex;justify-content:space-between;align-items:baseline;margin:1.1rem 0 .3rem}
@@ -474,7 +476,7 @@ document.querySelectorAll('a[href="#plan"]').forEach((l) => l.onclick = (e) => {
 // The plan builder: each problem maps to a service, the sheet adds them up,
 // and the matching service cards below light up.
 const SVC = {
-  launch:  { name: "Launch package", note: "Setup, email, website, launch plan", price: 1500, line: ["start"] },
+  launch:  { name: "Launch package", note: "Includes your website, plus domain, email and setup", price: 1250, line: ["start"] },
   site:    { name: "Website", note: "Designed and built for you", price: 1500, line: ["customers"] },
   booking: { name: "Website with booking or payments", note: "Clients book and pay without the DMs", price: 2500, line: ["customers"] },
   auto:    { name: "Automation", note: "Reminders, follow-ups, payment links", price: 500, line: ["manual"] },
@@ -520,7 +522,7 @@ function render() {
     if (have.has(k)) return;
     const s = SVC[k], li = document.createElement("li");
     li.dataset.k = k;
-    li.innerHTML = `<div><span>${s.name}</span><small>${s.note}</small></div><b>${s.talk ? "Let's talk" : "from $" + s.price.toLocaleString()}</b>`;
+    li.innerHTML = `<div><span>${s.name}${s.deal ? `<em class="deal">${s.deal}</em>` : ""}</span><small>${s.note}</small></div><b>${s.was ? `<s>$${s.was.toLocaleString()}</s>` : ""}${s.talk ? "Let's talk" : "from $" + s.price.toLocaleString()}</b>`;
     rowsEl.append(li);
   });
   if (!keys.length) rowsEl.innerHTML = '<li class="empty">Tap a problem and watch it come together.</li>';
@@ -574,7 +576,7 @@ function snapshot() {
   if (!keys.length) return null;
   return {
     problems: on.map((c) => c.dataset.full || c.textContent),
-    services: keys.map((k) => `${SVC[k].name}, ${SVC[k].talk ? "let's talk" : "from $" + SVC[k].price.toLocaleString()}`),
+    services: keys.map((k) => `${SVC[k].name}, ${SVC[k].talk ? "let's talk" : "from $" + SVC[k].price.toLocaleString()}${SVC[k].was ? ` (launch deal, $${SVC[k].was.toLocaleString()} value)` : ""}`),
     estimate: "$" + keys.reduce((n, k) => n + SVC[k].price, 0).toLocaleString(),
   };
 }
