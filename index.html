@@ -135,7 +135,12 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .s{transition:border-color .5s,box-shadow .5s,transform .5s var(--ease)}
 .s.lit{border-color:rgba(232,201,135,.85);box-shadow:0 0 0 1px rgba(232,201,135,.35),0 18px 60px -30px rgba(232,201,135,.55)}
 
-.plan{display:grid;grid-template-columns:1.15fr 1fr;gap:1.1rem;align-items:start}
+.plan{display:grid;grid-template-columns:1fr;gap:1.1rem;align-items:start;max-width:38rem;margin:1.4rem auto 0}
+.plan.both{grid-template-columns:1.15fr 1fr;max-width:none}
+.diy{display:block;margin:1.6rem auto 0;font:600 16px var(--sans);color:#E8C987;background:none;border:0;border-bottom:1px solid rgba(232,201,135,.45);padding:.2rem 0;cursor:pointer}
+.diy[hidden]{display:none}
+.pick-h{margin:0 0 .9rem;color:var(--dim);font-size:15px}
+.sheet{animation:up .5s var(--ease) both}
 .pick{border:1px solid var(--line);border-radius:24px;padding:1.4rem}
 .chips{display:flex;flex-wrap:wrap;gap:.55rem}
 .chip{font:500 15px/1.3 var(--sans);color:var(--text);background:transparent;border:1px solid var(--line);border-radius:99px;padding:.6rem 1rem;cursor:pointer;text-align:left;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
@@ -184,7 +189,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .s .n{font:800 14px var(--sans);letter-spacing:.1em;color:#E8C987;margin-bottom:.8rem}
 .s h3{font-size:21px;line-height:1.25;margin:0 0 .6rem}
 .s > p{margin:0;color:var(--dim);font-size:16px}
-@media (max-width:760px){.grid,.extra,.plan{grid-template-columns:1fr}.sheet{position:static}}
+@media (max-width:760px){.grid,.extra,.plan,.plan.both{grid-template-columns:1fr}.sheet{position:static}}
 /* Nav */
 .topnav{gap:1.3rem}
 .topnav a{position:relative;padding:.3rem 0}
@@ -217,8 +222,9 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 /* Phones: three projects stacked instead of the moving reel */
 .mwork{display:none}
 @media (max-width:760px){
-  .reel{display:none}
-  .mwork{display:grid;gap:.6rem;margin-bottom:3.5rem}
+  .reel,.built{display:none}
+  .mwork{display:none}
+  .extra{margin-bottom:3rem}
   .mw{display:grid;grid-template-columns:96px 1fr;gap:.9rem;align-items:center;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:18px;padding:.6rem}
   .mw img{width:96px;height:72px;object-fit:cover;object-position:top;border-radius:12px;display:block}
   .mw h3{font:700 17px var(--sans);margin:0 0 .15rem}
@@ -277,7 +283,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 
   <p class="me reveal">I'm Capri. I help entrepreneurs and small business owners turn ideas, challenges, and messy processes into solutions that actually work. <span>From business setup to custom technology, I'll help you figure out what you need and build it.</span> <a class="more" href="/about/">More about me</a></p>
 
-  <section class="svc" id="services">
+  <section class="svc" id="plan">
     <div class="sec reveal"><h2>Sound familiar?</h2><p>Tap the one that sounds like you.</p></div>
     <div class="grid" id="cards">
       <div class="s reveal" data-line="start"><span class="n">01</span><h3>The Starting Point</h3><p class="q">"I have an idea, but need help getting started."</p><p>The right foundation, tools, and next steps.</p><button type="button" class="me-btn" data-chip="I'm just starting out" data-line="start">That's me</button></div>
@@ -286,9 +292,10 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
       <div class="s reveal" data-line="grow"><span class="n">04</span><h3>The Next Level</h3><p class="q">"My business is growing, and I need better systems."</p><p>Dashboards, automations, and custom tools.</p><button type="button" class="me-btn" data-chip="It's all in my head or a spreadsheet" data-line="grow">That's me</button></div>
       <div class="s reveal" data-line="idea"><span class="n">05</span><h3>The Big Idea</h3><p class="q">"I have an idea for a tool or app I want to bring to life."</p><p>An app, platform, or AI-powered solution, built for real.</p><button type="button" class="me-btn" data-chip="I have an idea for an app" data-line="idea">That's me</button></div>
     </div>
-    <div class="sec reveal" id="plan" style="margin-top:6rem"><h2>Build your plan.</h2><p>Tap what sounds like you, or type your own.</p></div>
-    <div class="plan reveal">
-      <div class="pick">
+    <button type="button" class="diy reveal" id="diy">Not quite? Describe it yourself</button>
+    <div class="plan" id="planBox">
+      <div class="pick" id="pick" hidden>
+        <p class="pick-h">Tap anything that sounds like you, or type it.</p>
         <div class="chips" id="chips">
           <button type="button" class="chip" data-k="booking" data-line="customers">I take bookings in my DMs</button>
           <button type="button" class="chip" data-k="auto" data-line="manual">I chase people to pay me</button>
@@ -306,9 +313,9 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
           <button type="submit" aria-label="Add">Add</button>
         </form>
       </div>
-      <div class="sheet" aria-live="polite">
+      <div class="sheet" id="sheet" aria-live="polite" hidden>
         <p class="sheet-h">Your plan</p>
-        <ul id="rows"><li class="empty">Tap a problem and watch it come together.</li></ul>
+        <ul id="rows"><li class="empty">Tap anything and watch your plan come together.</li></ul>
         <div class="total"><span>Estimated starting investment</span><b id="sum">$0</b></div>
         <p class="care" id="care"></p>
         <p class="fine">Prices are starting points. Your final proposal may bundle these together based on your scope.</p>
@@ -545,7 +552,7 @@ function render() {
     li.innerHTML = `<div><span>${s.name}${s.deal ? `<em class="deal">${s.deal}</em>` : ""}</span><small>${s.note}</small></div><b>${s.was ? `<s>$${s.was.toLocaleString()}</s>` : ""}${s.talk ? "Let's talk" : "from $" + s.price.toLocaleString()}</b>`;
     rowsEl.append(li);
   });
-  if (!keys.length) rowsEl.innerHTML = '<li class="empty">Tap a problem and watch it come together.</li>';
+  if (!keys.length) rowsEl.innerHTML = '<li class="empty">Tap anything and watch your plan come together.</li>';
   countTo(keys.reduce((n, k) => n + SVC[k].price, 0));
   const needsCare = keys.some((k) => k !== "fund" && k !== "blue");
   careEl.textContent = needsCare ? (keys.includes("tool") ? "Plus a care plan from $150 a month to keep it running." : "Plus a care plan from $100 a month to keep it running.") : "";
@@ -553,8 +560,14 @@ function render() {
   const lines = new Set(picked().on.flatMap((c) => c.dataset.line ? [c.dataset.line] : c.dataset.k.split(",").flatMap((k) => SVC[k].line)));
   document.querySelectorAll(".s[data-line]").forEach((c) => c.classList.toggle("lit", lines.has(c.dataset.line)));
   if (!keys.length) closeForm();
+  sheetEl.hidden = !keys.length && pickEl.hidden;
   if (typeof syncBar === "function") syncBar();
 }
+const pickEl = document.getElementById("pick"), sheetEl = document.getElementById("sheet"), planBox = document.getElementById("planBox");
+document.getElementById("diy").onclick = (e) => {
+  pickEl.hidden = false; e.currentTarget.hidden = true; planBox.classList.add("both"); render();
+  pickEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+};
 chipsEl.addEventListener("click", (e) => { const c = e.target.closest(".chip"); if (!c) return; c.classList.toggle("on"); render(); });
 
 document.getElementById("own").onsubmit = (e) => {
