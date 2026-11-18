@@ -213,6 +213,19 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
   #cards .me-btn{grid-column:1/-1;justify-self:start;font-size:13px;padding:.4rem .85rem}
 }
 
+
+/* Phones: three projects stacked instead of the moving reel */
+.mwork{display:none}
+@media (max-width:760px){
+  .reel{display:none}
+  .mwork{display:grid;gap:.6rem;margin-bottom:3.5rem}
+  .mw{display:grid;grid-template-columns:96px 1fr;gap:.9rem;align-items:center;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:18px;padding:.6rem}
+  .mw img{width:96px;height:72px;object-fit:cover;object-position:top;border-radius:12px;display:block}
+  .mw h3{font:700 17px var(--sans);margin:0 0 .15rem}
+  .mw p{margin:0;color:var(--dim);font-size:14px;line-height:1.4}
+  .allwork{justify-self:center;margin-top:.6rem;color:#E8C987;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(232,201,135,.45)}
+}
+
 /* Mobile: the plan follows you */
 .planbar{position:fixed;left:20px;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:20;display:flex;align-items:center;gap:.8rem;padding:.75rem .8rem .75rem 1.3rem;border-radius:99px;text-decoration:none;color:#14110C;background:linear-gradient(180deg,#FBF4E6,#E8DCC4);box-shadow:0 12px 40px -10px rgba(0,0,0,.7),0 0 0 1px rgba(201,164,92,.6);animation:up .45s var(--ease) both}
 .planbar span{font:600 14px var(--sans)}
@@ -358,6 +371,13 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
     <a class="w" href="/work/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/plays.jpg" alt="" loading="lazy"><div><h3>My Plays</h3><p>A trading dashboard that says plainly when there's no trade.</p></div></a>
     <a class="w" href="/work/" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1"><img src="/work/hablamos.jpg" alt="" loading="lazy"><div><h3>Hablamos</h3><p>A Spanish practice app, built with my tutor.</p></div></a>
   </div></div>
+
+<div class="wrap mwork">
+  <a class="mw" href="https://rent-day-demo.vercel.app" target="_blank" rel="noreferrer"><img src="/work/rentday.jpg" alt="Rent Day" loading="lazy"><div><h3>Rent Day</h3><p>Pay links, reminders and late fees for a suite owner.</p></div></a>
+  <a class="mw" href="/salons/"><img src="/work/casaluz.jpg" alt="Casa Luz" loading="lazy"><div><h3>Casa Luz</h3><p>A salon site with booking, deposits and texts.</p></div></a>
+  <a class="mw" href="https://eigen.beauty" target="_blank" rel="noreferrer"><img src="/work/eigen.jpg" alt="Eigen" loading="lazy"><div><h3>Eigen</h3><p>A beauty brand with a scan for each eye.</p></div></a>
+  <a class="allwork" href="/work/">See all my work</a>
+</div>
 
 <div class="wrap">
 
