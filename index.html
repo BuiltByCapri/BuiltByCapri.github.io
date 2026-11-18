@@ -474,12 +474,12 @@ document.querySelectorAll('a[href="#plan"]').forEach((l) => l.onclick = (e) => {
 // The plan builder: each problem maps to a service, the sheet adds them up,
 // and the matching service cards below light up.
 const SVC = {
-  launch:  { name: "Launch package", note: "Setup, email, website, launch plan", price: 1000, line: ["start"] },
-  site:    { name: "Website", note: "Designed and built for you", price: 1000, line: ["customers"] },
+  launch:  { name: "Launch package", note: "Setup, email, website, launch plan", price: 1500, line: ["start"] },
+  site:    { name: "Website", note: "Designed and built for you", price: 1500, line: ["customers"] },
   booking: { name: "Website with booking or payments", note: "Clients book and pay without the DMs", price: 2500, line: ["customers"] },
   auto:    { name: "Automation", note: "Reminders, follow-ups, payment links", price: 500, line: ["manual"] },
-  tool:    { name: "Custom app or tool", note: "Dashboards and your own system", price: 3000, line: ["grow", "idea"] },
-  fund:    { name: "Funding Ready setup", note: "Business credit and lender-ready records", price: 500, line: ["grow"] },
+  tool:    { name: "Custom app or tool", note: "Bigger builds are scoped with you", price: 3000, line: ["grow", "idea"] },
+  fund:    { name: "Funding Ready setup", note: "Business credit and lender-ready records", price: 0, talk: true, line: ["grow"] },
   blue:    { name: "Business Blueprint", note: "We figure it out together", price: 199, line: [] },
 };
 // Typed problems are matched on plain words. Anything unmatched becomes a Blueprint.
@@ -520,7 +520,7 @@ function render() {
     if (have.has(k)) return;
     const s = SVC[k], li = document.createElement("li");
     li.dataset.k = k;
-    li.innerHTML = `<div><span>${s.name}</span><small>${s.note}</small></div><b>from $${s.price.toLocaleString()}</b>`;
+    li.innerHTML = `<div><span>${s.name}</span><small>${s.note}</small></div><b>${s.talk ? "Let's talk" : "from $" + s.price.toLocaleString()}</b>`;
     rowsEl.append(li);
   });
   if (!keys.length) rowsEl.innerHTML = '<li class="empty">Tap a problem and watch it come together.</li>';
@@ -574,7 +574,7 @@ function snapshot() {
   if (!keys.length) return null;
   return {
     problems: on.map((c) => c.dataset.full || c.textContent),
-    services: keys.map((k) => `${SVC[k].name}, from $${SVC[k].price.toLocaleString()}`),
+    services: keys.map((k) => `${SVC[k].name}, ${SVC[k].talk ? "let's talk" : "from $" + SVC[k].price.toLocaleString()}`),
     estimate: "$" + keys.reduce((n, k) => n + SVC[k].price, 0).toLocaleString(),
   };
 }
