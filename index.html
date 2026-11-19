@@ -57,8 +57,9 @@ body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.5 var(--san
 @keyframes float{to{transform:translate(10vmax,8vmax) scale(1.15)}}
 
 .top{position:sticky;top:0;z-index:10;background:rgba(2,13,9,.94);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;justify-content:space-between;align-items:center;height:52px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
 .brand{font:600 17px var(--sans);color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.brand img{display:block;height:46px;width:auto}
 .mini{font:700 13px var(--sans);color:#14110C;background:#F3EBDD;padding:.4rem .9rem;border-radius:99px;text-decoration:none}
 
 .hero{text-align:center;padding:clamp(4rem,14vw,9rem) 0 3rem}
@@ -270,7 +271,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <header class="top"><div class="wrap">
-  <a class="brand" href="https://builtbycapri.com">Built by Capri</a>
+  <a class="brand" href="https://builtbycapri.com"><img src="/builtbycapri-logo.png" alt="Built by Capri" width="300" height="128"></a>
   <nav class="topnav"><a href="/" aria-current="page">Home</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
 </div></header>
 
