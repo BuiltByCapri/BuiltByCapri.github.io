@@ -18,7 +18,18 @@ function escapeHtml(text) {
   return text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 }
 
+// Client demo sites on their own subdomains post here too, so they need cross-origin access.
+const ORIGINS = ["https://sirensong.builtbycapri.com", "https://siren-song.vercel.app"];
+
 module.exports = async (req, res) => {
+  const origin = req.headers.origin;
+  if (ORIGINS.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
+  }
+  if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Use POST." });
