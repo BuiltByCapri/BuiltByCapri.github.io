@@ -118,7 +118,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 
 .what{text-align:center;color:var(--dim);font-size:17px;max-width:36rem;margin:1rem auto 0}
 .svc{margin:7rem 0 0;scroll-margin-top:84px}
-#plan{scroll-margin-top:84px}
+#plan,#sheet{scroll-margin-top:84px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
 .s{border:1px solid var(--line);border-radius:24px;padding:1.6rem 1.6rem 1.4rem;display:flex;flex-direction:column}
 .s h3{font:700 26px/1.1 var(--sans);letter-spacing:-.03em;margin:0}
@@ -585,11 +585,13 @@ document.getElementById("own").onsubmit = (e) => {
 };
 
 
-// "That's me" on a situation card taps the matching problem in the plan.
+// "That's me" on a situation card taps the matching problem in the plan, then brings the plan into view.
 document.getElementById("cards").addEventListener("click", (e) => {
   const b = e.target.closest(".me-btn"); if (!b) return;
   const chip = [...chipsEl.querySelectorAll(".chip")].find((c) => c.textContent === b.dataset.chip);
-  if (chip) { chip.classList.toggle("on"); render(); }
+  if (!chip) return;
+  chip.classList.toggle("on"); render();
+  if (chip.classList.contains("on")) sheetEl.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 
