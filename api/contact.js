@@ -3,7 +3,7 @@
 // A filled-in "company_site" field is the honeypot: bots fill every field,
 // people never see it, and the request is thanked without sending anything.
 
-const LIMITS = { name: 120, email: 200, phone: 40, project: 4000, timeline: 120, source: 40, business: 160, stage: 60, estimate: 20, item: 200 };
+const LIMITS = { name: 120, email: 200, phone: 40, project: 4000, timeline: 120, source: 40, business: 160, stage: 60, estimate: 60, item: 200 };
 
 function clean(value, max) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -68,7 +68,7 @@ module.exports = async (req, res) => {
     stage && `Stage: ${stage}`,
     problems.length && `\nWhat's going on:\n${problems.map((p) => `- ${p}`).join("\n")}`,
     services.length && `\nRecommended:\n${services.map((s) => `- ${s}`).join("\n")}`,
-    estimate && `\nEstimated starting investment: ${estimate}`,
+    estimate && `\nEstimate: ${estimate}`,
     project && `\n${problems.length ? "Notes:\n" : ""}${project}`,
   ].filter(Boolean).join("\n");
 
