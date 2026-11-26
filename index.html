@@ -381,6 +381,9 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .sheet .ask small,.sheet .thanks p{color:#5E665F}
 .sheet .thanks h2{color:#0A2A1D}
 .sheet .grad{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#8A6A2E;animation:none}
+
+/* The bottom row lifts down, away from the cards above */
+@media (hover:hover) and (min-width:761px){#cards .s:nth-child(4):hover,#cards .s:nth-child(5):hover{transform:translateY(12px) scale(1.035)}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -490,6 +493,15 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
   </section>
 
 </div>
+
+<section class="voice reveal" aria-label="What a client said">
+  <div class="wrap">
+    <blockquote>
+      <p>"This site is just so beautiful and what I envisioned and even more."</p>
+      <cite><b>Raine Bowe</b> Creator of Wondersaurs</cite>
+    </blockquote>
+  </div>
+</section>
 
 <section class="band" id="work">
   <div class="wrap">
