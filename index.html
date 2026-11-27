@@ -385,6 +385,38 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 
 /* The bottom row lifts down, away from the cards above */
 @media (hover:hover) and (min-width:761px){#cards .s:nth-child(4):hover,#cards .s:nth-child(5):hover{transform:translateY(12px) scale(1.035)}}
+.partner{padding:7rem 0 6rem;background:radial-gradient(80% 60% at 50% 0%,rgba(31,77,58,.55),transparent 70%)}
+.verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:0 0 2.4rem}
+.verbs div{background:#04140E;padding:1.4rem 1.3rem;display:grid;gap:.35rem;align-content:start}
+.verbs b{font:700 22px/1.1 var(--sans);letter-spacing:-.03em;color:#E2C383}
+.verbs span{color:var(--dim);font-size:15px;line-height:1.45}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.tier{border:1px solid var(--line);border-radius:22px;padding:2rem 2rem 2.2rem;display:flex;flex-direction:column;background:rgba(7,26,19,.7)}
+.tier.lead{border-color:rgba(226,195,131,.75);box-shadow:0 30px 70px -40px rgba(217,181,110,.45)}
+.tier h3{font:700 28px/1.1 var(--sans);letter-spacing:-.03em;margin:0}
+.tier-price{margin:.6rem 0 1.3rem;display:flex;align-items:baseline;gap:.5rem}
+.tier-price b{font:700 44px/1 var(--sans);letter-spacing:-.04em}
+.tier-price span{color:var(--dim);font-size:16px}
+.tier ul{list-style:none;margin:0 0 1.8rem;padding:0;display:grid;gap:.7rem;flex:1;align-content:start}
+.tier li{position:relative;padding-left:1.6rem;color:#DCD3C3;font-size:16px;line-height:1.4}
+.tier li::before{content:"";position:absolute;left:0;top:.45em;width:.55rem;height:.55rem;border-radius:50%;border:1px solid #C9A45C}
+.tier .btn{align-self:flex-start}
+.btn.ghostbtn{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px rgba(201,164,92,.7)}
+.btn.ghostbtn::after{display:none}
+@media (max-width:760px){.partner{padding:5rem 0 4rem}.verbs{grid-template-columns:1fr 1fr}.tiers{grid-template-columns:1fr}.tier{padding:1.6rem 1.4rem 1.8rem}.tier .btn{align-self:stretch;text-align:center}}
+.pitch{text-align:center;max-width:46rem;margin:0 auto 3rem}
+.pitch h2{font:700 clamp(36px,6vw,64px)/1.05 var(--sans);letter-spacing:-.045em;margin:0 0 1.2rem}
+.pitch p{color:var(--dim);font-size:19px;line-height:1.5;margin:0 0 1rem}
+.pitch .have{font:700 clamp(30px,4.5vw,44px)/1.1 var(--sans);letter-spacing:-.035em;margin:2rem 0 .4rem}
+.pitch .pillars{color:#E2C383;font-size:16px;font-weight:600;letter-spacing:.01em;margin:0}
+.commit{text-align:center;color:var(--dim);font-size:16px;max-width:40rem;margin:1.6rem auto 0}
+.roi{margin-top:3rem;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2.4rem;align-items:start;background:#F3EBDD;color:#16261E;border-radius:22px;padding:2.4rem}
+.roi h3{font:700 32px/1.1 var(--sans);letter-spacing:-.035em;margin:0 0 .8rem}
+.roi-l p{margin:0;color:#3E4A43;font-size:17px;line-height:1.5}
+.roi ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.4rem}
+.roi li{position:relative;padding-left:1.5rem;font:600 15.5px/1.35 var(--sans)}
+.roi li::before{content:"";position:absolute;left:0;top:.35em;width:.6rem;height:.6rem;border-radius:2px;background:#C9A45C}
+@media (max-width:760px){.roi{grid-template-columns:1fr;padding:1.8rem 1.4rem;gap:1.4rem}.roi ul{grid-template-columns:1fr}.pitch p{font-size:17px}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -558,6 +590,62 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
       <li><span>Launch content and share graphic</span><em>$100</em></li>
       <li class="sumrow"><span>Total value</span><em>$1,850</em></li>
     </ul>
+  </div>
+</section>
+
+<section class="partner" id="partner">
+  <div class="wrap">
+    <div class="pitch reveal">
+      <h2>Bring me your problem.</h2>
+      <p>I help businesses identify what's holding them back, figure out what needs to change, and put the right solutions into action.</p>
+      <p>From business consulting and operational strategy to custom software, automation, and ongoing support, you won't have to coordinate multiple people to move your business forward.</p>
+      <p class="have"><span class="grad">You'll have Capri.</span></p>
+      <p class="pillars">Strategy · Development · Ongoing Support</p>
+    </div>
+    <div class="tiers reveal">
+      <div class="tier">
+        <h3>Advisory</h3>
+        <p class="tier-price"><b>$500</b><span>a month</span></p>
+        <ul>
+          <li>One strategy session a month, up to 60 minutes</li>
+          <li>A monthly review of your business performance and numbers</li>
+          <li>Text and email access between sessions</li>
+          <li>A first reply within one business day</li>
+          <li>Strategic recommendations and accountability</li>
+          <li>Your six month ROI report</li>
+        </ul>
+        <a class="btn ghostbtn" href="mailto:hello@builtbycapri.com?subject=Advisory">Ask about Advisory</a>
+      </div>
+      <div class="tier lead">
+        <h3>Partner</h3>
+        <p class="tier-price"><b>$1,000</b><span>a month</span></p>
+        <ul>
+          <li>Everything in Advisory</li>
+          <li>Four hours of implementation a month</li>
+          <li>Technical fixes and workflow improvements</li>
+          <li>Systems optimization</li>
+          <li>Implementation planning and prioritization</li>
+        </ul>
+        <a class="btn" href="mailto:hello@builtbycapri.com?subject=Partner">Ask about Partner</a>
+      </div>
+    </div>
+    <p class="commit reveal">Both engagements begin with a six-month commitment. Meaningful business improvement takes time, and our work is designed around continuous support, refinement, and progress, not one-time fixes.</p>
+    <div class="roi reveal">
+      <div class="roi-l">
+        <h3>You'll see what it was worth.</h3>
+        <p>When we start, I record where your business stands. Every month, I track the work and what it changed. At six months, you get a report that shows:</p>
+      </div>
+      <ul>
+        <li>Your original business challenges</li>
+        <li>The improvements we put in place</li>
+        <li>Hours you got back</li>
+        <li>Costs we cut</li>
+        <li>Revenue or gross profit gained, where it can be tied to the work</li>
+        <li>Operational improvements</li>
+        <li>Opportunities still open</li>
+        <li>Recommendations for the next six months</li>
+      </ul>
+    </div>
   </div>
 </section>
 
