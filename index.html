@@ -118,7 +118,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 
 .what{text-align:center;color:var(--dim);font-size:17px;max-width:36rem;margin:1rem auto 0}
 .svc{margin:7rem 0 0;scroll-margin-top:84px}
-#plan,#sheet{scroll-margin-top:84px}
+#plan,#sheet,#starts{scroll-margin-top:96px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
 .s{border:1px solid var(--line);border-radius:24px;padding:1.6rem 1.6rem 1.4rem;display:flex;flex-direction:column}
 .s h3{font:700 26px/1.1 var(--sans);letter-spacing:-.03em;margin:0}
@@ -343,6 +343,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .offer-list{list-style:none;margin:0;padding:2.2rem 2.4rem;background:#FBF6EC;border:1px solid rgba(201,164,92,.45);border-radius:22px;display:grid;gap:.95rem;box-shadow:0 30px 60px -45px rgba(10,42,29,.55)}
 .offer-list li{position:relative;padding-left:1.85rem;font:600 17px/1.35 var(--sans);color:#16261E}
 .offer-list li::before{content:"";position:absolute;left:0;top:.2em;width:1rem;height:1rem;border-radius:50%;border:1px solid #C9A45C;box-sizing:border-box}
+.offer-list li{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}.offer-list li em{font:500 15px/1 var(--sans);font-style:normal;color:#6B7A70;font-variant-numeric:tabular-nums;white-space:nowrap}.offer-list li.sumrow{padding-left:0;border-top:1px solid rgba(201,164,92,.45);padding-top:.95rem;margin-top:.2rem}.offer-list li.sumrow::before,.offer-list li.sumrow::after{display:none}.offer-list li.sumrow em{color:#16261E;font-weight:700}
 .offer-list li::after{content:"";position:absolute;left:.36rem;top:.38em;width:.24rem;height:.44rem;border:solid #A8843F;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
 @media (max-width:760px){.offer{padding:4.5rem 0}.offer-in{grid-template-columns:1fr;gap:2.2rem}.offer-list{padding:1.6rem 1.4rem}.offer-list li{font-size:16px}.btn.dark{width:100%;text-align:center}}
 .foot{padding-top:3.5rem}
@@ -456,7 +457,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
         <div class="total"><span>To start</span><b id="sum">$0</b></div>
         <div class="total mo"><span>Monthly</span><b id="mo">$0</b></div>
         <p class="care" id="care"></p>
-        <p class="fine">Prices are starting points. We settle your features and final price on a free call. You pay half the setup to start and the rest at launch. <a href="/payments/">How payment works</a></p>
+        <p class="fine" id="fine">Prices are starting points. We settle your features and final price on a free call. You pay half the setup to start and the rest at launch. <a href="/payments/">How payment works</a></p>
         <button type="button" class="btn" id="sendPlan" disabled>Send my plan to Capri</button>
         <form class="ask" id="ask" hidden>
           <div id="askBody">
@@ -519,9 +520,9 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
       <div class="frame"><div class="chrome"><i></i><i></i><i></i><span>builtbycapri.com/salons</span></div><img src="/work/casaluz.jpg" alt="Casa Luz screen" width="1280" height="800" loading="lazy"></div>
       <div class="meta"><p class="kind">Sample salon site</p><h3>Casa Luz</h3><p>Booking, group bookings, deposits and texts that bring clients back.</p></div>
     </a>
-    <a class="proj reveal" href="/barbershops/">
-      <div class="frame"><div class="chrome"><i></i><i></i><i></i><span>builtbycapri.com/barbershops</span></div><img src="/work/navaja.jpg" alt="Navaja screen" width="1280" height="800" loading="lazy"></div>
-      <div class="meta"><p class="kind">Sample barbershop site</p><h3>Navaja</h3><p>Choose your barber, see real openings, book two chairs at once.</p></div>
+    <a class="proj reveal" href="https://porch-light-demo.vercel.app" target="_blank" rel="noreferrer">
+      <div class="frame"><div class="chrome"><i></i><i></i><i></i><span>porch-light-demo.vercel.app</span></div><img src="/work/porch-light.jpg" alt="Porch Light screen" width="1280" height="800" loading="lazy"></div>
+      <div class="meta"><p class="kind">Sample landlord app</p><h3>Porch Light</h3><p>Move-in quotes, repair tracking residents can follow, and owner payouts with an income log.</p></div>
     </a>
     <a class="proj reveal" href="https://wondersaurs.com" target="_blank" rel="noreferrer">
       <div class="frame"><div class="chrome"><i></i><i></i><i></i><span>wondersaurs.com</span></div><img src="/work/wondersaurs.jpg" alt="Wondersaurs screen" width="1280" height="800" loading="lazy"></div>
@@ -546,15 +547,16 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
       <a class="btn dark" href="#plan" id="takeLaunch">Start with this package</a>
     </div>
     <ul class="offer-list">
-      <li>Business discovery and planning</li>
-      <li>Name and domain research</li>
-      <li>Service and pricing review</li>
-      <li>Logo design</li>
-      <li>Website, with booking or contact set up</li>
-      <li>Business number setup assistance</li>
-      <li>Business registration guidance</li>
-      <li>Google Business Profile</li>
-      <li>Launch content and share graphic</li>
+      <li><span>Business discovery and planning</span><em>$150</em></li>
+      <li><span>Name and domain research</span><em>$75</em></li>
+      <li><span>Service and pricing review</span><em>$200</em></li>
+      <li><span>Logo design</span><em>$300</em></li>
+      <li><span>Website, with booking or contact set up</span><em>$650</em></li>
+      <li><span>Business number setup assistance</span><em>$125</em></li>
+      <li><span>Business registration guidance</span><em>$175</em></li>
+      <li><span>Google Business Profile</span><em>$75</em></li>
+      <li><span>Launch content and share graphic</span><em>$100</em></li>
+      <li class="sumrow"><span>Total value</span><em>$1,850</em></li>
     </ul>
   </div>
 </section>
@@ -617,7 +619,7 @@ const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersec
 document.querySelectorAll(".reveal").forEach((el, i) => { el.style.transitionDelay = (el.closest(".hero") ? i * 120 : 0) + "ms"; io.observe(el); });
 
 // "Tell me yours" lands on the plan builder, clear of the header.
-document.querySelectorAll('a[href="#plan"]').forEach((l) => l.onclick = (e) => {
+document.querySelectorAll('a[href="#plan"]:not(#planbar)').forEach((l) => l.onclick = (e) => {
   e.preventDefault();
   document.getElementById("plan").scrollIntoView({ behavior: "smooth", block: "start" });
 });
@@ -639,7 +641,7 @@ const ORDER = ["launch", "site", "booking", "store", "portal", "custom", "auto",
 // When several problems are picked, the biggest build they point to is the suggestion.
 const PRIORITY = ["launch", "custom", "store", "portal", "booking", "site", "auto"];
 const FEATS = {
-  launch:  ["Online booking", "Contact or quote form", "Deposits at booking", "Gallery of your work", "Extra pages"],
+  launch:  ["Deposits at booking", "Gallery of your work", "Menu or price list", "Extra pages"],
   site:    ["Contact or quote form", "Gallery of your work", "Menu or price list", "Extra pages", "Show up on Google"],
   booking: ["Deposits at booking", "Policy checkbox before booking", "Intake questions", "More than one staff member", "Group bookings"],
   store:   ["Card and Apple Pay checkout", "Shipping", "Local pickup", "Inventory tracking", "Discount codes"],
@@ -658,19 +660,20 @@ const EXTRA = {
   phone:   { name: "Business number setup", setup: 125, inLaunch: true },
   reg:     { name: "Business registration guidance", setup: 175, inLaunch: true },
   texts:   { name: "Reminder texts", setup: 25, mo: 10 },
+  app:     { name: "Your own app", note: "One of my ready-made apps, like rent and repair tracking, set up with your name and your data. Opens from your phone's home screen", setup: 1000, mo: 200, notFor: ["custom"] },
   fund:    { name: "Funding Ready setup", note: "Business credit and lender-ready records", talk: true },
 };
 const LINE = { launch: "start", site: "customers", booking: "customers", store: "customers", portal: "grow", custom: "idea", auto: "manual", fund: "grow" };
 // Typed problems are matched on plain words. Anything unmatched becomes a Blueprint.
 const WORDS = [
-  [/book|appoint|schedul|dm|calendar|reserv/i, "booking"],
-  [/order|sell|shop online|checkout|store|product|ship/i, "store"],
-  [/start|launch|new business|llc|ein|register/i, "launch"],
-  [/website|site|google|found|find me|dated|old/i, "site"],
-  [/chase|remind|late|invoice|follow|repeat|manual|same|every day|text|come back|retain/i, "auto"],
-  [/portal|log ?in|client files|updates|status|documents/i, "portal"],
-  [/spreadsheet|track|head|dashboard|app|system|inventory|staff|report|idea|ai/i, "custom"],
-  [/fund|loan|credit|capital|lender|money to grow|grant/i, "fund"],
+  [/\b(book\w*|appoint\w*|schedul\w*|dms?|calendar|reserv\w*)\b/i, "booking"],
+  [/\b(orders?|sell\w*|shop online|checkout|store|products?|ship(s|ping)?)\b/i, "store"],
+  [/\b(start(ing)? (a|my|out|up)|launch\w*|new business|llc|ein|register\w*)\b/i, "launch"],
+  [/\b(website|site|google|found|find me|dated|old|outdated)\b/i, "site"],
+  [/\b(chas\w*|remind\w*|late|invoic\w*|follow\w*|repeat\w*|manual\w*|same|every day|texts?|come back|retain\w*)\b/i, "auto"],
+  [/\b(portal|log ?in|client files|updates?|status|documents?)\b/i, "portal"],
+  [/\b(spreadsheets?|track\w*|in my head|dashboards?|apps?|system\w*|inventory|staff|reports?|idea|ai)\b/i, "custom"],
+  [/\b(fund\w*|loans?|credit|capital|lenders?|money to grow|grants?)\b/i, "fund"],
 ];
 
 const $ = (id) => document.getElementById(id);
@@ -691,17 +694,21 @@ function picked() {
   const ex = new Set(extras);
   if (keys.has("fund")) ex.add("fund");
   if (!start || start === "blue") [...ex].forEach((k) => k !== "fund" && ex.delete(k));
-  return { on, keys, suggested, start, ex: [...ex].filter((k) => !(start === "launch" && EXTRA[k].inLaunch)) };
+  return { on, keys, suggested, start, ex: [...ex].filter((k) => !(start === "launch" && EXTRA[k].inLaunch) && !(EXTRA[k].notFor || []).includes(start)) };
 }
 
 function totals({ start, ex }) {
   const s = START[start];
   const setup = s ? [...s.setup] : [0, 0], mo = s ? [...s.mo] : [0, 0];
   ex.forEach((k) => { const e = EXTRA[k]; if (e.talk) return; setup[0] += e.setup; setup[1] += e.setup; if (e.mo) { mo[0] += e.mo; mo[1] += e.mo; } });
-  return { setup, mo, plus: !!(s && s.plus) };
+  return { setup, mo, plus: !!(s && (s.plus || (start === "launch" && feats.size))) };
 }
 
 function render() {
+  const fx = document.activeElement, fd = fx && fx.dataset ? fx.dataset : {};
+  const refocus = fd.s ? `[data-s="${fd.s}"]` : fd.x ? `[data-x="${fd.x}"]` : fd.f ? `[data-f="${CSS.escape(fd.f)}"]` : null;
+  const thanks = $("thanks");
+  if (thanks.classList.contains("on")) { thanks.classList.remove("on"); $("askBody").hidden = false; askForm.querySelector('button[type="submit"]').disabled = false; $("note").textContent = ""; closeForm(); }
   const p = picked(), { start, suggested, ex } = p, s = START[start];
   [...feats].forEach((f) => { if (!start || !FEATS[start].includes(f)) feats.delete(f); });
 
@@ -712,10 +719,10 @@ function render() {
   }).join("");
 
   $("featWrap").hidden = !start || !FEATS[start].length;
-  featsEl.innerHTML = start ? FEATS[start].map((f) => `<button type="button" class="chip${feats.has(f) ? " on" : ""}" data-f="${f}">${f}</button>`).join("") : "";
+  featsEl.innerHTML = start ? FEATS[start].map((f) => `<button type="button" class="chip${feats.has(f) ? " on" : ""}" data-f="${f}" aria-pressed="${feats.has(f)}">${f}</button>`).join("") : "";
 
   $("extraWrap").hidden = !start || start === "blue";
-  extrasEl.innerHTML = Object.entries(EXTRA).map(([k, e]) => {
+  extrasEl.innerHTML = Object.entries(EXTRA).filter(([, e]) => !(e.notFor || []).includes(start)).map(([k, e]) => {
     const inc = start === "launch" && e.inLaunch, on = inc || ex.includes(k);
     const price = inc ? "Included" : e.talk ? "Let's talk" : `${money(e.setup)}${e.mo ? `<small>plus $${e.mo}/mo</small>` : ""}`;
     return `<button type="button" class="opt sm${on ? " on" : ""}${inc ? " inc" : ""}" data-x="${k}" aria-pressed="${on}"${inc ? " disabled" : ""}><span><b>${e.name}</b>${e.note ? `<small>${e.note}</small>` : ""}</span><span class="p">${price}</span></button>`;
@@ -729,28 +736,35 @@ function render() {
 
   const t = totals(p);
   sumEl.textContent = s ? range(t.setup, t.plus) : ex.length ? "Let's talk" : "$0";
-  moEl.textContent = t.mo[1] ? range(t.mo, t.plus) : s ? "None" : "$0";
+  moEl.textContent = t.mo[1] ? range(t.mo, t.plus) : s ? "None" : ex.length ? "Let's talk" : "$0";
   careEl.textContent = !s ? "" : start === "blue"
     ? "No monthly fee. If you hire me to build it, the $199 comes off your build."
-    : `The monthly is your website license and care plan: hosting, maintenance and support. 12 month minimum.${start === "launch" ? " Launch pricing, in exchange for a review and permission to feature your site." : ""}`;
+    : `The monthly is your ${({ custom: "app", portal: "portal", auto: "automation" })[start] || (ex.includes("app") ? "website and app" : "website")} license and care plan: hosting, maintenance and support. 12 month minimum.${start === "launch" ? " Launch pricing, in exchange for a review and permission to feature your site." : ""}`;
 
+  $("fine").innerHTML = (start === "blue" ? "You pay the $199 when you book your session."
+    : start === "launch" ? `Your price is set. ${money(625)} to start, and the rest at launch.${feats.size ? " Any features you add are priced on our call." : ""}`
+    : "Prices are starting points. We settle your features and final price on a free call. You pay half the setup to start and the rest at launch.")
+    + ' <a href="/payments/">How payment works</a>';
   const any = !!(s || ex.length);
   sendBtn.disabled = !any;
   const lines = new Set(p.on.flatMap((c) => c.dataset.line ? [c.dataset.line] : c.dataset.k.split(",").map((k) => LINE[k]).filter(Boolean)));
   document.querySelectorAll(".s[data-line]").forEach((c) => c.classList.toggle("lit", lines.has(c.dataset.line)));
   if (!any) closeForm();
   sheetEl.hidden = !any && pickEl.hidden;
+  chipsEl.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c.classList.contains("on")));
   syncBar();
+  if (refocus) { const el = document.querySelector(refocus); if (el) el.focus({ preventScroll: true }); }
 }
 
 function openPick() {
   if (!pickEl.hidden) return;
   pickEl.hidden = false; $("diy").hidden = true; planBox.classList.add("both");
 }
-$("takeLaunch").onclick = (e) => { e.preventDefault(); openPick(); chosen = "launch"; render(); $("plan").scrollIntoView({ behavior: "smooth" }); };
+$("takeLaunch").onclick = (e) => { e.preventDefault(); openPick(); chosen = "launch"; render(); startsEl.scrollIntoView({ behavior: "smooth", block: "start" }); };
 $("diy").onclick = () => { openPick(); render(); pickEl.scrollIntoView({ behavior: "smooth", block: "nearest" }); };
 chipsEl.addEventListener("click", (e) => { const c = e.target.closest(".chip"); if (!c) return; c.classList.toggle("on"); render(); });
-startsEl.addEventListener("click", (e) => { const b = e.target.closest(".opt"); if (!b) return; chosen = b.dataset.s; render(); });
+startsEl.addEventListener("click", (e) => { const b = e.target.closest(".opt"); if (!b) return; chosen = b.dataset.s;
+  [...extras].forEach((k) => { if ((EXTRA[k].notFor || []).includes(chosen)) extras.delete(k); }); render(); });
 featsEl.addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (!b) return; const f = b.dataset.f; feats.has(f) ? feats.delete(f) : feats.add(f); render(); });
 extrasEl.addEventListener("click", (e) => {
   const b = e.target.closest(".opt"); if (!b || b.disabled) return;
@@ -783,6 +797,7 @@ $("cards").addEventListener("click", (e) => {
 
 // A small bar keeps the running total in view on phones until the plan itself is on screen.
 const planbar = $("planbar");
+planbar.onclick = (e) => { e.preventDefault(); sheetEl.scrollIntoView({ behavior: "smooth", block: "start" }); };
 let sheetSeen = false;
 new IntersectionObserver((es) => { sheetSeen = es[0].isIntersecting; syncBar(); }, { threshold: .25 }).observe(sheetEl);
 function syncBar() {
@@ -799,7 +814,7 @@ function snapshot() {
   return {
     problems: p.on.map((c) => c.dataset.full || c.textContent),
     services: [
-      s && `${s.name}: ${range(s.setup, s.plus)} to start${s.mo[1] ? `, then ${range(s.mo, s.plus)} a month` : ""}${s.deal ? ` (${s.deal}, ${money(s.was)} value)` : ""}`,
+      s && `${p.start === "blue" ? "Business Blueprint" : s.name}: ${range(s.setup, s.plus)} to start${s.mo[1] ? `, then ${range(s.mo, s.plus)} a month` : ""}${s.deal ? ` (${s.deal}, ${money(s.was)} value)` : ""}`,
       feats.size && `Features: ${[...feats].join(", ")}`,
       ...p.ex.map((k) => { const e = EXTRA[k]; return `${e.name}: ${e.talk ? "let's talk" : money(e.setup) + (e.mo ? ` plus $${e.mo}/mo` : "")}`; }),
     ].filter(Boolean),
