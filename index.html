@@ -413,10 +413,11 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
 .roi{margin-top:3rem;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2.4rem;align-items:start;background:#F3EBDD;color:#16261E;border-radius:22px;padding:2.4rem}
 .roi h3{font:700 32px/1.1 var(--sans);letter-spacing:-.035em;margin:0 0 .8rem}
 .roi-l p{margin:0;color:#3E4A43;font-size:17px;line-height:1.5}
-.roi ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.4rem}
-.roi li{position:relative;padding-left:1.5rem;font:600 15.5px/1.35 var(--sans)}
+.roi ul{list-style:none;margin:0;padding:0;columns:2;column-gap:1.6rem}
+.roi li{position:relative;padding-left:1.5rem;font:600 15.5px/1.35 var(--sans);break-inside:avoid;margin:0 0 .8rem}
 .roi li::before{content:"";position:absolute;left:0;top:.35em;width:.6rem;height:.6rem;border-radius:2px;background:#C9A45C}
-@media (max-width:760px){.roi{grid-template-columns:1fr;padding:1.8rem 1.4rem;gap:1.4rem}.roi ul{grid-template-columns:1fr}.pitch p{font-size:17px}}
+@media (max-width:760px){.roi{grid-template-columns:1fr;padding:1.8rem 1.4rem;gap:1.4rem}.roi ul{columns:1}.pitch p{font-size:17px}}
+.tier-tag{margin:.45rem 0 0;color:#E2C383;font-size:15.5px;line-height:1.4;font-weight:500}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -605,23 +606,25 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
     <div class="tiers reveal">
       <div class="tier">
         <h3>Advisory</h3>
-        <p class="tier-price"><b>$500</b><span>a month</span></p>
+        <p class="tier-tag">Strategy and accountability. We decide what to change, and I keep you on track.</p>
+        <p class="tier-price"><b>$500</b><span>/ month</span></p>
         <ul>
-          <li>One strategy session a month, up to 60 minutes</li>
-          <li>A monthly review of your business performance and numbers</li>
+          <li>One strategy session per month (up to 60 minutes)</li>
+          <li>Monthly review of your business performance and numbers</li>
           <li>Text and email access between sessions</li>
-          <li>A first reply within one business day</li>
+          <li>Responses within one business day</li>
           <li>Strategic recommendations and accountability</li>
-          <li>Your six month ROI report</li>
+          <li>A six-month business impact report</li>
         </ul>
         <a class="btn ghostbtn" href="mailto:hello@builtbycapri.com?subject=Advisory">Ask about Advisory</a>
       </div>
       <div class="tier lead">
         <h3>Partner</h3>
-        <p class="tier-price"><b>$1,000</b><span>a month</span></p>
+        <p class="tier-tag">Where strategy meets execution. We identify what needs to happen, prioritize it, and put it into action.</p>
+        <p class="tier-price"><b>$1,000</b><span>/ month</span></p>
         <ul>
           <li>Everything in Advisory</li>
-          <li>Four hours of implementation a month</li>
+          <li>Four hours of implementation per month</li>
           <li>Technical fixes and workflow improvements</li>
           <li>Systems optimization</li>
           <li>Implementation planning and prioritization</li>
@@ -632,7 +635,7 @@ textarea:focus,input:focus{outline:none;border-color:rgba(217,181,110,.6);box-sh
     <p class="commit reveal">Both engagements begin with a six-month commitment. Meaningful business improvement takes time, and our work is designed around continuous support, refinement, and progress, not one-time fixes.</p>
     <div class="roi reveal">
       <div class="roi-l">
-        <h3>You'll see what it was worth.</h3>
+        <h3>You'll know what changed.</h3>
         <p>When we start, I record where your business stands. Every month, I track the work and what it changed. At six months, you get a report that shows:</p>
       </div>
       <ul>
